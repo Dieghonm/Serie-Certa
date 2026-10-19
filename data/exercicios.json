@@ -1,0 +1,376 @@
+[
+  {
+    "id": "puxada-frontal",
+    "nome": "Puxada frontal",
+    "descricao": "Sentado na polia alta, puxe a barra até a altura do peito levando os cotovelos para baixo, sem balançar o tronco.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "biceps"
+    ]
+  },
+  {
+    "id": "remada-curvada",
+    "nome": "Remada curvada",
+    "descricao": "Com o tronco inclinado e as costas retas, puxe a barra em direção ao abdômen e controle a descida.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "biceps"
+    ]
+  },
+  {
+    "id": "remada-baixa",
+    "nome": "Remada baixa",
+    "descricao": "Sentado na polia baixa, puxe o triângulo até o abdômen aproximando as escápulas, mantendo o tronco firme.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "biceps"
+    ]
+  },
+  {
+    "id": "remada-unilateral",
+    "nome": "Remada unilateral (serrote)",
+    "descricao": "Apoiado no banco, puxe o halter até a lateral do quadril, um braço de cada vez.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "biceps"
+    ]
+  },
+  {
+    "id": "barra-fixa",
+    "nome": "Barra fixa",
+    "descricao": "Pendurado na barra, puxe o corpo até o queixo passar da barra e desça com controle.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "biceps"
+    ]
+  },
+  {
+    "id": "pulldown",
+    "nome": "Pulldown na polia",
+    "descricao": "Em pé na polia alta, com os braços quase estendidos, leve a barra até as coxas focando nas costas.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "encolhimento-halteres",
+    "nome": "Encolhimento com halteres",
+    "descricao": "Em pé com um halter em cada mão, eleve os ombros em direção às orelhas e desça devagar.",
+    "img": "",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "rosca-direta",
+    "nome": "Rosca direta",
+    "descricao": "Em pé, flexione os cotovelos levando a barra até a altura dos ombros, sem balançar o tronco.",
+    "img": "",
+    "grupoPrincipal": "biceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "rosca-alternada",
+    "nome": "Rosca alternada",
+    "descricao": "Com halteres, flexione um braço de cada vez girando o punho para cima durante a subida.",
+    "img": "",
+    "grupoPrincipal": "biceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "rosca-martelo",
+    "nome": "Rosca martelo",
+    "descricao": "Com halteres e as palmas voltadas uma para a outra, flexione os cotovelos mantendo os punhos neutros.",
+    "img": "",
+    "grupoPrincipal": "biceps",
+    "gruposSecundarios": [
+      "antebraco"
+    ]
+  },
+  {
+    "id": "rosca-scott",
+    "nome": "Rosca Scott",
+    "descricao": "Com os braços apoiados no banco Scott, flexione os cotovelos e desça devagar sem estender totalmente.",
+    "img": "",
+    "grupoPrincipal": "biceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "rosca-concentrada",
+    "nome": "Rosca concentrada",
+    "descricao": "Sentado, com o cotovelo apoiado na parte interna da coxa, flexione o braço com o halter de forma controlada.",
+    "img": "",
+    "grupoPrincipal": "biceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "supino-reto-barra",
+    "nome": "Supino reto com barra",
+    "descricao": "Deitado no banco, desça a barra até o meio do peito e empurre para cima estendendo os braços.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": [
+      "triceps"
+    ]
+  },
+  {
+    "id": "supino-inclinado-halteres",
+    "nome": "Supino inclinado com halteres",
+    "descricao": "No banco inclinado, empurre os halteres para cima e desça até a altura do peito, focando na parte superior.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": [
+      "triceps"
+    ]
+  },
+  {
+    "id": "supino-declinado",
+    "nome": "Supino declinado",
+    "descricao": "No banco declinado, desça a barra até a parte baixa do peito e empurre de volta com controle.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": [
+      "triceps"
+    ]
+  },
+  {
+    "id": "crucifixo-reto",
+    "nome": "Crucifixo reto",
+    "descricao": "Deitado com os halteres acima do peito, abra os braços com cotovelos levemente flexionados e feche de volta.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "crossover",
+    "nome": "Crossover (cruzamento na polia)",
+    "descricao": "Em pé entre as polias altas, traga as mãos à frente do corpo em um movimento de abraço, apertando o peito.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "voador",
+    "nome": "Voador (peck deck)",
+    "descricao": "Sentado na máquina, una os braços à frente do peito e retorne devagar, sem deixar os pesos encostarem.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "flexao-de-braco",
+    "nome": "Flexão de braço",
+    "descricao": "Em posição de prancha, desça o corpo até o peito quase tocar o chão e empurre de volta, mantendo o corpo alinhado.",
+    "img": "",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": [
+      "triceps"
+    ]
+  },
+  {
+    "id": "triceps-pulley",
+    "nome": "Tríceps pulley (barra)",
+    "descricao": "Na polia alta, com os cotovelos colados ao corpo, estenda os braços para baixo e retorne devagar.",
+    "img": "",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "triceps-corda",
+    "nome": "Tríceps na corda",
+    "descricao": "Na polia alta com a corda, estenda os braços para baixo abrindo as pontas da corda no final do movimento.",
+    "img": "",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "triceps-testa",
+    "nome": "Tríceps testa",
+    "descricao": "Deitado no banco, flexione os cotovelos levando a barra em direção à testa e estenda de volta.",
+    "img": "",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "triceps-frances",
+    "nome": "Tríceps francês",
+    "descricao": "Sentado ou em pé, segure um halter acima da cabeça, flexione os cotovelos atrás da nuca e estenda.",
+    "img": "",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "mergulho-banco",
+    "nome": "Mergulho no banco",
+    "descricao": "Com as mãos apoiadas no banco atrás de você, flexione os cotovelos descendo o quadril e suba estendendo os braços.",
+    "img": "",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "triceps-coice",
+    "nome": "Tríceps coice",
+    "descricao": "Com o tronco inclinado e o cotovelo junto ao corpo, estenda o braço para trás com o halter.",
+    "img": "",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "agachamento-livre",
+    "nome": "Agachamento livre",
+    "descricao": "Com a barra apoiada nas costas, desça flexionando joelhos e quadril até as coxas ficarem paralelas ao chão e suba.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "leg-press",
+    "nome": "Leg press 45°",
+    "descricao": "Sentado na máquina, empurre a plataforma estendendo as pernas e retorne controlando a descida.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "cadeira-extensora",
+    "nome": "Cadeira extensora",
+    "descricao": "Sentado na máquina, estenda os joelhos elevando a carga e desça devagar.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "mesa-flexora",
+    "nome": "Mesa flexora",
+    "descricao": "Deitado de bruços na máquina, flexione os joelhos levando o rolo em direção aos glúteos.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "stiff",
+    "nome": "Stiff",
+    "descricao": "Em pé com a barra ou halteres, incline o tronco com as pernas quase estendidas, sentindo alongar a parte de trás das coxas.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "afundo",
+    "nome": "Afundo",
+    "descricao": "Dê um passo à frente e flexione os dois joelhos até o de trás quase tocar o chão, depois volte.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "agachamento-bulgaro",
+    "nome": "Agachamento búlgaro",
+    "descricao": "Com o pé de trás apoiado em um banco, desça flexionando o joelho da frente e suba.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "cadeira-abdutora",
+    "nome": "Cadeira abdutora",
+    "descricao": "Sentado na máquina, abra as pernas empurrando as almofadas para fora e retorne devagar.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "elevacao-pelvica",
+    "nome": "Elevação pélvica",
+    "descricao": "Com as costas apoiadas no banco e a barra sobre o quadril, eleve o quadril contraindo os glúteos no topo.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "panturrilha-em-pe",
+    "nome": "Panturrilha em pé",
+    "descricao": "Em pé, suba na ponta dos pés o mais alto que conseguir e desça alongando bem a panturrilha.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "panturrilha-sentado",
+    "nome": "Panturrilha sentado",
+    "descricao": "Sentado na máquina, com a carga sobre os joelhos, eleve os calcanhares e desça com controle.",
+    "img": "",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "abdominal-crunch",
+    "nome": "Abdominal crunch",
+    "descricao": "Deitado com os joelhos flexionados, eleve os ombros do chão contraindo o abdômen, sem puxar o pescoço.",
+    "img": "",
+    "grupoPrincipal": "core",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "prancha",
+    "nome": "Prancha",
+    "descricao": "Apoiado nos antebraços e nas pontas dos pés, mantenha o corpo reto e o abdômen contraído pelo tempo definido.",
+    "img": "",
+    "grupoPrincipal": "core",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "prancha-lateral",
+    "nome": "Prancha lateral",
+    "descricao": "Apoiado em um antebraço e na lateral do pé, mantenha o corpo alinhado e o quadril elevado.",
+    "img": "",
+    "grupoPrincipal": "core",
+    "gruposSecundarios": [
+      "obliquos"
+    ]
+  },
+  {
+    "id": "elevacao-de-pernas",
+    "nome": "Elevação de pernas",
+    "descricao": "Deitado ou pendurado na barra, eleve as pernas até a altura do quadril com o abdômen contraído e desça devagar.",
+    "img": "",
+    "grupoPrincipal": "core",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "rotacao-russa",
+    "nome": "Rotação russa",
+    "descricao": "Sentado com o tronco inclinado para trás, gire o tronco de um lado para o outro, com ou sem peso.",
+    "img": "",
+    "grupoPrincipal": "core",
+    "gruposSecundarios": [
+      "obliquos"
+    ]
+  },
+  {
+    "id": "abdominal-roda",
+    "nome": "Abdominal com rodinha",
+    "descricao": "De joelhos, role a rodinha para a frente estendendo o corpo e retorne contraindo o abdômen.",
+    "img": "",
+    "grupoPrincipal": "core",
+    "gruposSecundarios": []
+  }
+]
