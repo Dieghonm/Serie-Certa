@@ -21,7 +21,7 @@ export async function criarTreino(treino: Treino): Promise<void> {
 export async function arquivarTreino(id: string): Promise<void> {
   const treinos = await listarTreinos();
   const atualizados = treinos.map((t) =>
-    t.id === id ? { ...t, arquivado: true } : t
+    t.id === id ? { ...t, arquivado: true } : t,
   );
   await salvarTreinos(atualizados);
 }
@@ -30,4 +30,9 @@ export async function excluirTreino(id: string): Promise<void> {
   const treinos = await listarTreinos();
   const restantes = treinos.filter((t) => t.id !== id);
   await salvarTreinos(restantes);
+}
+
+export async function buscarTreino(id: string): Promise<Treino | undefined> {
+  const treinos = await listarTreinos();
+  return treinos.find((t) => t.id === id);
 }

@@ -8,6 +8,5 @@ export function buscarPorId(id: string): Exercicio | undefined {
 }
 
 export function filtrarPorGrupo(grupo: string): Exercicio[] {
-
   return lista.filter((e) => e.grupoPrincipal === grupo);
 }
