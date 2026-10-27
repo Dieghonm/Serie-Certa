@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { router } from "expo-router";
 import { Alert, Pressable, ScrollView, Text, TextInput, View } from "react-native";
+import { Botao } from "@/components/Botao";
 import { criarTreino } from "@/utils/armazenamento";
 import { buscarTodos } from "@/utils/exercicios";
 import { Treino } from "@/types/treino";
 import { estilosMontar } from "@/styles/telas/montar";
 
 const exercicios = buscarTodos();
+const grupos = ["Todos", ...new Set(exercicios.map((e) => e.grupoPrincipal))];
 
 export default function Montar() {
   const [nome, setNome] = useState("");
@@ -14,26 +16,17 @@ export default function Montar() {
   const [grupoAtivo, setGrupoAtivo] = useState("Todos");
   const [mostrarSelecionados, setMostrarSelecionados] = useState(false);
 
-  const grupos = [
-    "Todos",
-    ...new Set(exercicios.map((exercicio) => exercicio.grupoPrincipal)),
-  ];
-
   const exerciciosFiltrados = exercicios.filter((exercicio) => {
     const grupoCorresponde =
       grupoAtivo === "Todos" || exercicio.grupoPrincipal === grupoAtivo;
-
     const selecaoCorresponde =
       !mostrarSelecionados || selecionados.includes(exercicio.id);
-
     return grupoCorresponde && selecaoCorresponde;
   });
 
   function alternarSelecao(id: string) {
     setSelecionados((atual) =>
-      atual.includes(id)
-        ? atual.filter((item) => item !== id)
-        : [...atual, id]
+      atual.includes(id) ? atual.filter((item) => item !== id) : [...atual, id]
     );
   }
 
@@ -44,7 +37,6 @@ export default function Montar() {
       Alert.alert("Atenção", "Informe o nome da série.");
       return;
     }
-
     if (selecionados.length === 0) {
       Alert.alert("Atenção", "Selecione pelo menos um exercício.");
       return;
@@ -70,7 +62,6 @@ export default function Montar() {
   return (
     <View style={estilosMontar.container}>
       <Text style={estilosMontar.rotulo}>Nome da série</Text>
-
       <TextInput
         style={estilosMontar.campo}
         value={nome}
@@ -78,96 +69,77 @@ export default function Montar() {
         placeholder="Ex: Costas e bíceps"
       />
 
-      <Text style={{ fontSize: 18, fontWeight: "600", marginTop: 20, marginBottom: 10 }}>
+      <Text style={estilosMontar.tituloExercicios}>
         Exercícios ({selecionados.length} selecionados)
       </Text>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flexGrow: 0, marginBottom: 12 }}>
-        <View style={{ flexDirection: "row", gap: 8 }}>
-          {grupos.map((grupo) => (
-            <Pressable
-              key={grupo}
-              onPress={() => setGrupoAtivo(grupo)}
-              style={{
-                paddingVertical: 8,
-                paddingHorizontal: 14,
-                borderRadius: 20,
-                backgroundColor: grupoAtivo === grupo ? "#2563eb" : "#e5e7eb",
-              }}
-            >
-              <Text style={{ color: grupoAtivo === grupo ? "#ffffff" : "#374151" }}>
-                {grupo}
-              </Text>
-            </Pressable>
-          ))}
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={estilosMontar.filtros}
+      >
+        <View style={estilosMontar.filtrosLinha}>
+          {grupos.map((grupo) => {
+            const ativo = grupoAtivo === grupo;
+            return (
+              <Pressable
+                key={grupo}
+                onPress={() => setGrupoAtivo(grupo)}
+                style={[estilosMontar.chip, ativo && estilosMontar.chipAtivo]}
+              >
+                <Text
+                  style={[
+                    estilosMontar.textoChip,
+                    ativo && estilosMontar.textoChipAtivo,
+                  ]}
+                >
+                  {grupo}
+                </Text>
+              </Pressable>
+            );
+          })}
         </View>
       </ScrollView>
 
       <Pressable
         onPress={() => setMostrarSelecionados((atual) => !atual)}
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          gap: 8,
-          paddingVertical: 10,
-        }}
+        style={estilosMontar.alternarLinha}
       >
-        <Text style={{ fontSize: 18 }}>
-          {mostrarSelecionados ? "☑" : "☐"}
-        </Text>
-        <Text>
-          Mostrar apenas selecionados ({selecionados.length})
-        </Text>
+        <Text style={estilosMontar.caixa}>{mostrarSelecionados ? "☑" : "☐"}</Text>
+        <Text>Mostrar apenas selecionados ({selecionados.length})</Text>
       </Pressable>
 
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 16 }}>
+      <ScrollView
+        style={estilosMontar.lista}
+        contentContainerStyle={estilosMontar.listaConteudo}
+      >
         {exerciciosFiltrados.map((exercicio) => {
           const selecionado = selecionados.includes(exercicio.id);
-
           return (
             <Pressable
               key={exercicio.id}
               onPress={() => alternarSelecao(exercicio.id)}
-              style={{
-                padding: 16,
-                marginBottom: 12,
-                borderRadius: 12,
-                borderWidth: 2,
-                borderColor: selecionado ? "#2563eb" : "#e5e7eb",
-                backgroundColor: selecionado ? "#eff6ff" : "#ffffff",
-              }}
+              style={[
+                estilosMontar.cartao,
+                selecionado && estilosMontar.cartaoSelecionado,
+              ]}
             >
-              <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
-                <Text style={{ flex: 1, fontSize: 16, fontWeight: "600", color: "#111827" }}>
-                  {exercicio.nome}
-                </Text>
-
-                <Text style={{ fontSize: 20, color: "#2563eb" }}>
-                  {selecionado ? "☑" : "☐"}
-                </Text>
+              <View style={estilosMontar.cartaoTopo}>
+                <Text style={estilosMontar.nomeExercicio}>{exercicio.nome}</Text>
+                <Text style={estilosMontar.marcador}>{selecionado ? "☑" : "☐"}</Text>
               </View>
-
-              <Text style={{ marginTop: 8, color: "#4b5563", lineHeight: 20 }}>
-                {exercicio.descricao}
-              </Text>
-
-              <Text style={{ marginTop: 10, fontSize: 12, color: "#2563eb" }}>
-                {exercicio.grupoPrincipal}
-              </Text>
+              <Text style={estilosMontar.descricao}>{exercicio.descricao}</Text>
+              <Text style={estilosMontar.grupo}>{exercicio.grupoPrincipal}</Text>
             </Pressable>
           );
         })}
 
         {exerciciosFiltrados.length === 0 && (
-          <Text style={{ textAlign: "center", padding: 24, color: "#6b7280" }}>
-            Nenhum exercício encontrado.
-          </Text>
+          <Text style={estilosMontar.vazio}>Nenhum exercício encontrado.</Text>
         )}
       </ScrollView>
 
-      <Pressable style={estilosMontar.botao} onPress={salvar}>
-        <Text style={estilosMontar.textoBotao}>Salvar série</Text>
-      </Pressable>
+      <Botao titulo="Salvar série" onPress={salvar} />
     </View>
   );
 }

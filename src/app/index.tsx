@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { Link, router, useFocusEffect } from "expo-router";
-import { FlatList, Pressable, Text, View } from "react-native";
+import { router, useFocusEffect } from "expo-router";
+import { FlatList, Text, View } from "react-native";
 import { listarTreinos } from "@/utils/armazenamento";
 import { Treino } from "@/types/treino";
 import { estilosInicio } from "@/styles/telas/inicio";

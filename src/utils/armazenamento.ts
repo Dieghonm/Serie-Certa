@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Treino } from "../types/treino";
+import { ExercicioDoTreino, Treino } from "../types/treino";
 
 const CHAVE = "serie-certa:treinos";
 
@@ -35,4 +35,24 @@ export async function excluirTreino(id: string): Promise<void> {
 export async function buscarTreino(id: string): Promise<Treino | undefined> {
   const treinos = await listarTreinos();
   return treinos.find((t) => t.id === id);
+}
+
+export async function atualizarExercicio(
+  treinoId: string,
+  exercicioId: string,
+  campo: keyof Omit<ExercicioDoTreino, "exercicioId">,
+  valor: number,
+): Promise<void> {
+  const treinos = await listarTreinos();
+  const atualizados = treinos.map((t) =>
+    t.id === treinoId
+      ? {
+          ...t,
+          exercicios: t.exercicios.map((e) =>
+            e.exercicioId === exercicioId ? { ...e, [campo]: valor } : e,
+          ),
+        }
+      : t,
+  );
+  await salvarTreinos(atualizados);
 }

@@ -8,7 +8,8 @@ export const estilosBotao = StyleSheet.create({
     borderRadius: raios.medio,
     alignItems: "center",
   },
-  secundario: { backgroundColor: cores.primaria },
+  secundario: { backgroundColor: cores.superficie },
+  perigo: { backgroundColor: cores.perigo },
   texto: {
     color: cores.textoSobrePrimaria,
     fontSize: 16,
