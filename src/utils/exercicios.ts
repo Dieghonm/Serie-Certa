@@ -3,6 +3,10 @@ import { Exercicio } from "../types/exercicio";
 
 const lista: Exercicio[] = exercicios;
 
+export function buscarTodos(): Exercicio[] {
+  return lista;
+}
+
 export function buscarPorId(id: string): Exercicio | undefined {
   return lista.find((e) => e.id === id);
 }
@@ -10,3 +14,4 @@ export function buscarPorId(id: string): Exercicio | undefined {
 export function filtrarPorGrupo(grupo: string): Exercicio[] {
   return lista.filter((e) => e.grupoPrincipal === grupo);
 }
+
