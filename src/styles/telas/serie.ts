@@ -9,7 +9,7 @@ export const estilosSerie = StyleSheet.create({
     backgroundColor: cores.fundo,
   },
   lista: { gap: espacamentos.pequeno, paddingBottom: espacamentos.medio },
-  titulo: { fontSize: 24, fontWeight: "700", color: cores.texto },
+  titulo: { fontSize: 26, fontWeight: "800", color: cores.texto },
   subtitulo: { fontSize: 16, color: cores.textoSecundario },
   mensagem: {
     color: cores.textoSecundario,
@@ -17,12 +17,18 @@ export const estilosSerie = StyleSheet.create({
     marginTop: espacamentos.grande,
   },
   cartaoExercicio: {
+    backgroundColor: cores.cartao,
     borderWidth: 1,
     borderColor: cores.borda,
-    borderRadius: raios.medio,
+    borderRadius: raios.grande,
     padding: espacamentos.medio,
     gap: espacamentos.pequeno,
   },
-  nomeExercicio: { fontSize: 16, fontWeight: "600", color: cores.texto },
+  linhaTitulo: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: espacamentos.pequeno,
+  },
+  nomeExercicio: { flex: 1, fontSize: 16, fontWeight: "700", color: cores.texto },
   descricao: { color: cores.textoSecundario, lineHeight: 20 },
 });

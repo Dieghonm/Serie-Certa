@@ -5,15 +5,20 @@ export const estilosBotao = StyleSheet.create({
   base: {
     backgroundColor: cores.primaria,
     padding: espacamentos.medio,
-    borderRadius: raios.medio,
+    borderRadius: raios.grande,
     alignItems: "center",
   },
-  secundario: { backgroundColor: cores.superficie },
+  secundario: {
+    backgroundColor: cores.superficie,
+    borderWidth: 1,
+    borderColor: cores.borda,
+  },
   perigo: { backgroundColor: cores.perigo },
   texto: {
     color: cores.textoSobrePrimaria,
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: "700",
   },
   textoSecundario: { color: cores.texto },
+  textoPerigo: { color: cores.textoSobrePerigo },
 });

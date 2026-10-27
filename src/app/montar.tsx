@@ -6,6 +6,8 @@ import { criarTreino } from "@/utils/armazenamento";
 import { buscarTodos } from "@/utils/exercicios";
 import { Treino } from "@/types/treino";
 import { estilosMontar } from "@/styles/telas/montar";
+import { ImagemExercicio } from "@/components/ImagemExercicio";
+import { cores } from "@/styles/tema";
 
 const exercicios = buscarTodos();
 const grupos = ["Todos", ...new Set(exercicios.map((e) => e.grupoPrincipal))];
@@ -66,6 +68,7 @@ export default function Montar() {
         style={estilosMontar.campo}
         value={nome}
         onChangeText={setNome}
+        placeholderTextColor={cores.textoSecundario}
         placeholder="Ex: Costas e bíceps"
       />
 
@@ -106,7 +109,9 @@ export default function Montar() {
         style={estilosMontar.alternarLinha}
       >
         <Text style={estilosMontar.caixa}>{mostrarSelecionados ? "☑" : "☐"}</Text>
-        <Text>Mostrar apenas selecionados ({selecionados.length})</Text>
+        <Text style={estilosMontar.textoAlternar}>
+          Mostrar apenas selecionados ({selecionados.length})
+        </Text>
       </Pressable>
 
       <ScrollView
@@ -128,6 +133,7 @@ export default function Montar() {
                 <Text style={estilosMontar.nomeExercicio}>{exercicio.nome}</Text>
                 <Text style={estilosMontar.marcador}>{selecionado ? "☑" : "☐"}</Text>
               </View>
+              <ImagemExercicio uri={exercicio.img} animar={false} />
               <Text style={estilosMontar.descricao}>{exercicio.descricao}</Text>
               <Text style={estilosMontar.grupo}>{exercicio.grupoPrincipal}</Text>
             </Pressable>

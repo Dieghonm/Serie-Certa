@@ -13,15 +13,20 @@ export function Botao({ titulo, onPress, variante = "primario" }: Props) {
 
   return (
     <Pressable
-      style={[
+      style={({ pressed }) => [
         estilosBotao.base,
         secundario && estilosBotao.secundario,
         perigo && estilosBotao.perigo,
+        pressed && { opacity: 0.8 },
       ]}
       onPress={onPress}
     >
       <Text
-        style={[estilosBotao.texto, secundario && estilosBotao.textoSecundario]}
+        style={[
+          estilosBotao.texto,
+          secundario && estilosBotao.textoSecundario,
+          perigo && estilosBotao.textoPerigo,
+        ]}
       >
         {titulo}
       </Text>

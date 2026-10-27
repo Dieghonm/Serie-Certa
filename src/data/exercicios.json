@@ -3,7 +3,7 @@
     "id": "puxada-frontal",
     "nome": "Puxada frontal",
     "descricao": "Sentado na polia alta, puxe a barra até a altura do peito levando os cotovelos para baixo, sem balançar o tronco.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/uh/yp/puxada-frontal_75625.gif?width=686&height=487",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -13,7 +13,7 @@
     "id": "remada-curvada",
     "nome": "Remada curvada",
     "descricao": "Com o tronco inclinado e as costas retas, puxe a barra em direção ao abdômen e controle a descida.",
-    "img": "",
+    "img": "https://static1.minhavida.com.br/articles/a5/fc/48/f6/makatserchykshutterstock-orig-1.jpg",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -23,7 +23,7 @@
     "id": "remada-baixa",
     "nome": "Remada baixa",
     "descricao": "Sentado na polia baixa, puxe o triângulo até o abdômen aproximando as escápulas, mantendo o tronco firme.",
-    "img": "",
+    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2021/09/remada-sentado-com-cabos-e-triangulo-para-costas.gif",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -33,7 +33,7 @@
     "id": "remada-unilateral",
     "nome": "Remada unilateral (serrote)",
     "descricao": "Apoiado no banco, puxe o halter até a lateral do quadril, um braço de cada vez.",
-    "img": "",
+    "img": "https://saude.abril.com.br/wp-content/uploads/2025/11/Captura-de-tela-2025-11-25-065422.png",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -43,7 +43,7 @@
     "id": "barra-fixa",
     "nome": "Barra fixa",
     "descricao": "Pendurado na barra, puxe o corpo até o queixo passar da barra e desça com controle.",
-    "img": "",
+    "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2019/04/chinup.gif",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -53,7 +53,7 @@
     "id": "pulldown",
     "nome": "Pulldown na polia",
     "descricao": "Em pé na polia alta, com os braços quase estendidos, leve a barra até as coxas focando nas costas.",
-    "img": "",
+    "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2024/09/pulldown-corda.gif",
     "grupoPrincipal": "costas",
     "gruposSecundarios": []
   },
@@ -61,7 +61,7 @@
     "id": "encolhimento-halteres",
     "nome": "Encolhimento com halteres",
     "descricao": "Em pé com um halter em cada mão, eleve os ombros em direção às orelhas e desça devagar.",
-    "img": "",
+    "img": "https://www.lyfta.app/_next/image?url=https%3A%2F%2Flyfta.app%2Fimages%2Fexercises%2F04061101.png&w=640&q=80",
     "grupoPrincipal": "costas",
     "gruposSecundarios": []
   },
@@ -69,7 +69,7 @@
     "id": "rosca-direta",
     "nome": "Rosca direta",
     "descricao": "Em pé, flexione os cotovelos levando a barra até a altura dos ombros, sem balançar o tronco.",
-    "img": "",
+    "img": "https://treinoemalta.com.br/wp-content/uploads/2023/07/Rosca-Direta-com-Halteres-1.gif",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": []
   },
@@ -77,7 +77,7 @@
     "id": "rosca-alternada",
     "nome": "Rosca alternada",
     "descricao": "Com halteres, flexione um braço de cada vez girando o punho para cima durante a subida.",
-    "img": "",
+    "img": "https://treinoemalta.com.br/wp-content/uploads/2023/07/Rosca-Alternada-com-Halteres.gif",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": []
   },
@@ -85,7 +85,7 @@
     "id": "rosca-martelo",
     "nome": "Rosca martelo",
     "descricao": "Com halteres e as palmas voltadas uma para a outra, flexione os cotovelos mantendo os punhos neutros.",
-    "img": "",
+    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/rosca-biceps-martelo-com-halteres.gif",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": [
       "antebraco"
@@ -95,7 +95,7 @@
     "id": "rosca-scott",
     "nome": "Rosca Scott",
     "descricao": "Com os braços apoiados no banco Scott, flexione os cotovelos e desça devagar sem estender totalmente.",
-    "img": "",
+    "img": "https://static.wixstatic.com/media/2edbed_0aac7c2b57cc4a65906159b7be921526~mv2.gif/v1/fill/w_720,h_720,al_c,pstr/2edbed_0aac7c2b57cc4a65906159b7be921526~mv2.gif",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": []
   },
@@ -103,7 +103,7 @@
     "id": "rosca-concentrada",
     "nome": "Rosca concentrada",
     "descricao": "Sentado, com o cotovelo apoiado na parte interna da coxa, flexione o braço com o halter de forma controlada.",
-    "img": "",
+    "img": "https://static.strengthlevel.com/images/exercises/dumbbell-concentration-curl/dumbbell-concentration-curl-800.jpg",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": []
   },
@@ -111,7 +111,7 @@
     "id": "supino-reto-barra",
     "nome": "Supino reto com barra",
     "descricao": "Deitado no banco, desça a barra até o meio do peito e empurre para cima estendendo os braços.",
-    "img": "",
+    "img": "https://i.pinimg.com/474x/bc/e8/aa/bce8aaf1e17ded8eb7f788ab056635fa.jpg",
     "grupoPrincipal": "peito",
     "gruposSecundarios": [
       "triceps"
@@ -121,7 +121,7 @@
     "id": "supino-inclinado-halteres",
     "nome": "Supino inclinado com halteres",
     "descricao": "No banco inclinado, empurre os halteres para cima e desça até a altura do peito, focando na parte superior.",
-    "img": "",
+    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/supino-inclinado-com-halteres.gif",
     "grupoPrincipal": "peito",
     "gruposSecundarios": [
       "triceps"

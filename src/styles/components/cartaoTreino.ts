@@ -3,19 +3,22 @@ import { cores, espacamentos, raios } from "@/styles/tema";
 
 export const estilosCartaoTreino = StyleSheet.create({
   cartao: {
-    backgroundColor: cores.primaria,
+    backgroundColor: cores.cartao,
     padding: espacamentos.medio,
-    borderRadius: raios.medio,
+    borderRadius: raios.grande,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    borderLeftWidth: 4,
+    borderLeftColor: cores.primaria,
     gap: 4,
   },
   nome: {
-    color: cores.textoSobrePrimaria,
-    fontSize: 16,
-    fontWeight: "600",
+    color: cores.texto,
+    fontSize: 17,
+    fontWeight: "700",
   },
   subtitulo: {
-    color: cores.textoSobrePrimaria,
+    color: cores.textoSecundario,
     fontSize: 13,
-    opacity: 0.85,
   },
 });

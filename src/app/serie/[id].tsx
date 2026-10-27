@@ -12,6 +12,7 @@ import {
 import { buscarPorId } from "@/utils/exercicios";
 import { ExercicioDoTreino, Treino } from "@/types/treino";
 import { estilosSerie } from "@/styles/telas/serie";
+import { ImagemExercicio } from "@/components/ImagemExercicio";
 
 type Campo = keyof Omit<ExercicioDoTreino, "exercicioId">;
 
@@ -80,7 +81,9 @@ export default function DetalheSerie() {
 
           return (
             <View key={item.exercicioId} style={estilosSerie.cartaoExercicio}>
+              
               <Text style={estilosSerie.nomeExercicio}>{exercicio.nome}</Text>
+              <ImagemExercicio uri={exercicio.img} />
               <Text style={estilosSerie.descricao}>{exercicio.descricao}</Text>
 
               <Contador
@@ -99,8 +102,8 @@ export default function DetalheSerie() {
                 rotulo="Carga"
                 valor={item.carga}
                 unidade=" kg"
-                onMenos={() => mudar(item.exercicioId, "carga", -2.5, 0)}
-                onMais={() => mudar(item.exercicioId, "carga", 2.5, 0)}
+                onMenos={() => mudar(item.exercicioId, "carga", -1, 0)}
+                onMais={() => mudar(item.exercicioId, "carga", 1, 0)}
               />
             </View>
           );
