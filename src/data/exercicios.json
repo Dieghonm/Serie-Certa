@@ -3,7 +3,7 @@
     "id": "puxada-frontal",
     "nome": "Puxada frontal",
     "descricao": "Sentado na polia alta, puxe a barra até a altura do peito levando os cotovelos para baixo, sem balançar o tronco.",
-    "img": "https://image.tuasaude.com/media/article/uh/yp/puxada-frontal_75625.gif?width=686&height=487",
+    "img": "https://image.tuasaude.com/media/article/ku/ib/treino-costas_73930.gif?width=1372&height=974",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -23,7 +23,7 @@
     "id": "remada-baixa",
     "nome": "Remada baixa",
     "descricao": "Sentado na polia baixa, puxe o triângulo até o abdômen aproximando as escápulas, mantendo o tronco firme.",
-    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2021/09/remada-sentado-com-cabos-e-triangulo-para-costas.gif",
+    "img": "https://image.tuasaude.com/media/article/pe/zj/treino-costas_73940.gif?width=1372&height=974",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -33,7 +33,7 @@
     "id": "remada-unilateral",
     "nome": "Remada unilateral (serrote)",
     "descricao": "Apoiado no banco, puxe o halter até a lateral do quadril, um braço de cada vez.",
-    "img": "https://saude.abril.com.br/wp-content/uploads/2025/11/Captura-de-tela-2025-11-25-065422.png",
+    "img": "https://image.tuasaude.com/media/article/dc/pn/treino-costas_73935.gif?width=1372&height=974",
     "grupoPrincipal": "costas",
     "gruposSecundarios": [
       "biceps"
@@ -69,7 +69,7 @@
     "id": "rosca-direta",
     "nome": "Rosca direta",
     "descricao": "Em pé, flexione os cotovelos levando a barra até a altura dos ombros, sem balançar o tronco.",
-    "img": "https://treinoemalta.com.br/wp-content/uploads/2023/07/Rosca-Direta-com-Halteres-1.gif",
+    "img": "https://image.tuasaude.com/media/article/gj/wg/exercicios-para-biceps-e-triceps_30542.gif?width=1372&height=974",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": []
   },
@@ -85,7 +85,7 @@
     "id": "rosca-martelo",
     "nome": "Rosca martelo",
     "descricao": "Com halteres e as palmas voltadas uma para a outra, flexione os cotovelos mantendo os punhos neutros.",
-    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/rosca-biceps-martelo-com-halteres.gif",
+    "img": "https://image.tuasaude.com/media/article/mh/fb/exercicios-para-biceps-e-triceps_75259.gif?width=1372&height=974",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": [
       "antebraco"
@@ -95,7 +95,7 @@
     "id": "rosca-scott",
     "nome": "Rosca Scott",
     "descricao": "Com os braços apoiados no banco Scott, flexione os cotovelos e desça devagar sem estender totalmente.",
-    "img": "https://static.wixstatic.com/media/2edbed_0aac7c2b57cc4a65906159b7be921526~mv2.gif/v1/fill/w_720,h_720,al_c,pstr/2edbed_0aac7c2b57cc4a65906159b7be921526~mv2.gif",
+    "img": "https://image.tuasaude.com/media/article/on/hu/exercicios-para-biceps-e-triceps_75260.gif?width=1372&height=974",
     "grupoPrincipal": "biceps",
     "gruposSecundarios": []
   },
@@ -111,7 +111,7 @@
     "id": "supino-reto-barra",
     "nome": "Supino reto com barra",
     "descricao": "Deitado no banco, desça a barra até o meio do peito e empurre para cima estendendo os braços.",
-    "img": "https://i.pinimg.com/474x/bc/e8/aa/bce8aaf1e17ded8eb7f788ab056635fa.jpg",
+    "img": "https://image.tuasaude.com/media/article/sq/yo/exercicios-para-peitoral_73972.gif?width=1372&height=974",
     "grupoPrincipal": "peito",
     "gruposSecundarios": [
       "triceps"
@@ -121,7 +121,7 @@
     "id": "supino-inclinado-halteres",
     "nome": "Supino inclinado com halteres",
     "descricao": "No banco inclinado, empurre os halteres para cima e desça até a altura do peito, focando na parte superior.",
-    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2020/12/supino-inclinado-com-halteres.gif",
+    "img": "https://image.tuasaude.com/media/article/cf/eo/exercicios-para-peitoral_73971.gif?width=1372&height=974",
     "grupoPrincipal": "peito",
     "gruposSecundarios": [
       "triceps"
@@ -149,7 +149,7 @@
     "id": "crossover",
     "nome": "Crossover (cruzamento na polia)",
     "descricao": "Em pé entre as polias altas, traga as mãos à frente do corpo em um movimento de abraço, apertando o peito.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/ly/ur/exercicios-para-peitoral_73975.gif?width=1372&height=974",
     "grupoPrincipal": "peito",
     "gruposSecundarios": []
   },
@@ -183,7 +183,7 @@
     "id": "triceps-corda",
     "nome": "Tríceps na corda",
     "descricao": "Na polia alta com a corda, estenda os braços para baixo abrindo as pontas da corda no final do movimento.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/db/mr/exercicios-para-biceps-e-triceps_30547.gif?width=1372&height=974",
     "grupoPrincipal": "triceps",
     "gruposSecundarios": []
   },
@@ -191,7 +191,7 @@
     "id": "triceps-testa",
     "nome": "Tríceps testa",
     "descricao": "Deitado no banco, flexione os cotovelos levando a barra em direção à testa e estenda de volta.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/hd/sc/exercicios-para-biceps-e-triceps_75262.gif?width=1372&height=974",
     "grupoPrincipal": "triceps",
     "gruposSecundarios": []
   },
@@ -207,7 +207,7 @@
     "id": "mergulho-banco",
     "nome": "Mergulho no banco",
     "descricao": "Com as mãos apoiadas no banco atrás de você, flexione os cotovelos descendo o quadril e suba estendendo os braços.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/cj/bh/exercicios-para-biceps-e-triceps_30548.gif?width=1372&height=974",
     "grupoPrincipal": "triceps",
     "gruposSecundarios": []
   },
@@ -215,7 +215,7 @@
     "id": "triceps-coice",
     "nome": "Tríceps coice",
     "descricao": "Com o tronco inclinado e o cotovelo junto ao corpo, estenda o braço para trás com o halter.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/rk/hy/exercicios-para-biceps-e-triceps_75264.gif?width=1372&height=974",
     "grupoPrincipal": "triceps",
     "gruposSecundarios": []
   },
@@ -223,7 +223,7 @@
     "id": "agachamento-livre",
     "nome": "Agachamento livre",
     "descricao": "Com a barra apoiada nas costas, desça flexionando joelhos e quadril até as coxas ficarem paralelas ao chão e suba.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/vt/ko/treino-de-perna_73976.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -233,7 +233,7 @@
     "id": "leg-press",
     "nome": "Leg press 45°",
     "descricao": "Sentado na máquina, empurre a plataforma estendendo as pernas e retorne controlando a descida.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/mw/jl/treino-de-perna_73986.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -243,7 +243,7 @@
     "id": "cadeira-extensora",
     "nome": "Cadeira extensora",
     "descricao": "Sentado na máquina, estenda os joelhos elevando a carga e desça devagar.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/no/dh/treino-de-perna_73985.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": []
   },
@@ -251,7 +251,7 @@
     "id": "mesa-flexora",
     "nome": "Mesa flexora",
     "descricao": "Deitado de bruços na máquina, flexione os joelhos levando o rolo em direção aos glúteos.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/pz/cr/treino-de-perna_73987.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": []
   },
@@ -259,7 +259,7 @@
     "id": "stiff",
     "nome": "Stiff",
     "descricao": "Em pé com a barra ou halteres, incline o tronco com as pernas quase estendidas, sentindo alongar a parte de trás das coxas.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/xs/wi/treino-de-perna_73977.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -269,7 +269,7 @@
     "id": "afundo",
     "nome": "Afundo",
     "descricao": "Dê um passo à frente e flexione os dois joelhos até o de trás quase tocar o chão, depois volte.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/jc/eg/treino-de-perna_73982.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -279,7 +279,7 @@
     "id": "agachamento-bulgaro",
     "nome": "Agachamento búlgaro",
     "descricao": "Com o pé de trás apoiado em um banco, desça flexionando o joelho da frente e suba.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/hw/gc/treino-de-perna_73983.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -289,7 +289,7 @@
     "id": "cadeira-abdutora",
     "nome": "Cadeira abdutora",
     "descricao": "Sentado na máquina, abra as pernas empurrando as almofadas para fora e retorne devagar.",
-    "img": "",
+    "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2024/09/lever-seated-hip-abduction.gif",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -299,7 +299,7 @@
     "id": "elevacao-pelvica",
     "nome": "Elevação pélvica",
     "descricao": "Com as costas apoiadas no banco e a barra sobre o quadril, eleve o quadril contraindo os glúteos no topo.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/xl/it/treino-de-perna_73978.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": [
       "gluteos"
@@ -309,7 +309,7 @@
     "id": "panturrilha-em-pe",
     "nome": "Panturrilha em pé",
     "descricao": "Em pé, suba na ponta dos pés o mais alto que conseguir e desça alongando bem a panturrilha.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/zj/ji/treino-de-perna_73984.gif?width=1372&height=974",
     "grupoPrincipal": "pernas",
     "gruposSecundarios": []
   },
@@ -333,7 +333,7 @@
     "id": "prancha",
     "nome": "Prancha",
     "descricao": "Apoiado nos antebraços e nas pontas dos pés, mantenha o corpo reto e o abdômen contraído pelo tempo definido.",
-    "img": "",
+    "img": "https://image.tuasaude.com/media/article/wh/eu/treino-costas_73941.gif?width=1372&height=974",
     "grupoPrincipal": "core",
     "gruposSecundarios": []
   },
@@ -372,5 +372,165 @@
     "img": "",
     "grupoPrincipal": "core",
     "gruposSecundarios": []
+  },
+  {
+    "id": "desenvolvimento-halteres",
+    "nome": "Desenvolvimento com halteres",
+    "descricao": "Sentado com um halter em cada mão na altura dos ombros, empurre para cima até estender os braços e desça com controle.",
+    "img": "https://image.tuasaude.com/media/article/la/cj/exercicio-para-ombro_73966.gif?width=1372&height=974",
+    "grupoPrincipal": "ombros",
+    "gruposSecundarios": [
+      "triceps"
+    ]
+  },
+  {
+    "id": "elevacao-lateral",
+    "nome": "Elevação lateral",
+    "descricao": "Em pé com halteres ao lado do corpo, eleve os braços lateralmente até a altura dos ombros e desça devagar.",
+    "img": "https://image.tuasaude.com/media/article/hc/ml/exercicio-para-ombro_73961.gif?width=1372&height=974",
+    "grupoPrincipal": "ombros",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "elevacao-frontal",
+    "nome": "Elevação frontal",
+    "descricao": "Em pé com halteres à frente das coxas, eleve os braços à frente até a altura dos ombros e desça com controle.",
+    "img": "https://image.tuasaude.com/media/article/jc/zr/exercicio-para-ombro_73962.gif?width=1372&height=974",
+    "grupoPrincipal": "ombros",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "arnold-press",
+    "nome": "Arnold press",
+    "descricao": "Sentado com os halteres à frente do peito e as palmas voltadas para você, gire os punhos enquanto empurra para cima e inverta na descida.",
+    "img": "https://image.tuasaude.com/media/article/ne/ga/exercicio-para-ombro_73965.gif?width=1372&height=974",
+    "grupoPrincipal": "ombros",
+    "gruposSecundarios": [
+      "triceps"
+    ]
+  },
+  {
+    "id": "pulley-articulado",
+    "nome": "Pulley articulado",
+    "descricao": "Na polia, puxe o cabo em direção ao rosto ou à altura do peito, com os cotovelos altos, focando nos ombros e na parte superior das costas.",
+    "img": "https://image.tuasaude.com/media/article/ia/nw/exercicio-para-ombro_73967.gif?width=1372&height=974",
+    "grupoPrincipal": "ombros",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "crucifixo-inverso",
+    "nome": "Crucifixo inverso",
+    "descricao": "Com o tronco inclinado à frente, abra os braços com halteres para os lados até a altura dos ombros, focando na parte de trás do ombro.",
+    "img": "https://image.tuasaude.com/media/article/hj/aq/exercicio-para-ombro_73964.gif?width=1372&height=974",
+    "grupoPrincipal": "ombros",
+    "gruposSecundarios": [
+      "costas"
+    ]
+  },
+  {
+    "id": "fly-inverso",
+    "nome": "Fly inverso",
+    "descricao": "Sentado de frente para o apoio da máquina, abra os braços para trás aproximando as escápulas e retorne devagar.",
+    "img": "https://image.tuasaude.com/media/article/fx/ra/treino-costas_73937.gif?width=1372&height=974",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "ombros"
+    ]
+  },
+  {
+    "id": "puxada-graviton",
+    "nome": "Puxada graviton (barra assistida)",
+    "descricao": "Na máquina de barra assistida, ajuste a carga de ajuda e puxe o corpo até o queixo passar da barra, descendo com controle.",
+    "img": "https://image.tuasaude.com/media/article/rv/yd/treino-costas_73939.gif?width=1372&height=974",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "biceps"
+    ]
+  },
+  {
+    "id": "remada-alta",
+    "nome": "Remada alta",
+    "descricao": "Em pé, puxe a barra ou os halteres rente ao corpo até a altura do peito, com os cotovelos acima das mãos, e desça devagar.",
+    "img": "https://image.tuasaude.com/media/article/ss/kh/treino-costas_73934.gif?width=1372&height=974",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": [
+      "ombros",
+      "biceps"
+    ]
+  },
+  {
+    "id": "pullover-polia",
+    "nome": "Pullover na polia",
+    "descricao": "Em pé na polia alta, com os braços quase estendidos, puxe a barra em arco até as coxas, sentindo as costas trabalharem.",
+    "img": "https://image.tuasaude.com/media/article/ln/dm/treino-costas_73936.gif?width=1372&height=974",
+    "grupoPrincipal": "costas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "supino-fechado",
+    "nome": "Supino fechado",
+    "descricao": "Deitado no banco, segure a barra com as mãos na largura dos ombros e desça até o peito mantendo os cotovelos próximos ao corpo, depois empurre.",
+    "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2023/07/barbell-lying-closegrip-press.gif",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": [
+      "peito"
+    ]
+  },
+  {
+    "id": "agachamento-sumo",
+    "nome": "Agachamento sumô",
+    "descricao": "Com os pés bem afastados e as pontas voltadas para fora, desça flexionando joelhos e quadril e suba contraindo glúteos e parte interna das coxas.",
+    "img": "https://image.tuasaude.com/media/article/hf/kq/treino-de-perna_73981.gif?width=1372&height=974",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "coice-gluteo",
+    "nome": "Coice (glúteo)",
+    "descricao": "Em quatro apoios, estenda uma perna para trás e para cima contraindo o glúteo no topo, sem arquear a lombar, e retorne com controle.",
+    "img": "https://image.tuasaude.com/media/article/xy/fv/treino-de-perna_73979.gif?width=1372&height=974",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "abducao-quadril-chao",
+    "nome": "Abdução de quadril no chão",
+    "descricao": "Deitado de lado, com as pernas alinhadas, eleve a perna de cima lateralmente e desça devagar sem girar o quadril.",
+    "img": "https://image.tuasaude.com/media/article/ey/ky/treino-de-perna_73980.gif?width=1372&height=974",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
+    ]
+  },
+  {
+    "id": "cadeira-adutora",
+    "nome": "Cadeira adutora",
+    "descricao": "Sentado na máquina com as almofadas na parte interna das coxas, feche as pernas e retorne devagar.",
+    "img": "https://image.tuasaude.com/media/article/qt/qw/treino-de-perna_73988.gif?width=1372&height=974",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "cadeira-flexora",
+    "nome": "Cadeira flexora",
+    "descricao": "Sentado na máquina, flexione os joelhos levando o apoio para baixo e para trás e retorne devagar.",
+    "img": "https://i.pinimg.com/236x/7f/e9/34/7fe9341c3661842997cbc7fcc4c13ea2.jpg?nii=t",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "levantamento-terra",
+    "nome": "Levantamento terra",
+    "descricao": "Com a barra rente às pernas e as costas retas, estenda quadril e joelhos para ficar em pé e desça controlando a barra.",
+    "img": "https://image.tuasaude.com/media/article/xq/be/treino-de-perna_73989.gif?width=1372&height=974",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos",
+      "costas"
+    ]
   }
 ]
