@@ -1,22 +1,23 @@
 import { StyleSheet } from "react-native";
-import { cores } from "@/styles/tema";
-
-const TAMANHO = 140;
+import { cores, raios } from "@/styles/tema";
 
 export const estilosImagemExercicio = StyleSheet.create({
   imagem: {
-    width: TAMANHO,
-    height: TAMANHO,
-    borderRadius: 8,
+    width: "100%",
+    aspectRatio: 1.4,
+    borderRadius: raios.medio,
     backgroundColor: cores.superficie,
   },
   vazio: {
-    width: TAMANHO,
-    height: TAMANHO,
-    borderRadius: 8,
+    width: "100%",
+    aspectRatio: 1.4,
+    borderRadius: raios.medio,
     backgroundColor: cores.superficie,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    borderStyle: "dashed",
     alignItems: "center",
     justifyContent: "center",
   },
-  textoVazio: { color: cores.textoSecundario, fontSize: 9, textAlign: "center" },
+  textoVazio: { color: cores.textoSecundario, fontSize: 12, textAlign: "center" },
 });

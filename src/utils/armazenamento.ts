@@ -21,7 +21,7 @@ export async function criarTreino(treino: Treino): Promise<void> {
 export async function arquivarTreino(id: string): Promise<void> {
   const treinos = await listarTreinos();
   const atualizados = treinos.map((t) =>
-    t.id === id ? { ...t, arquivado: true } : t,
+    t.id === id ? { ...t, arquivado: !t.arquivado } : t,
   );
   await salvarTreinos(atualizados);
 }

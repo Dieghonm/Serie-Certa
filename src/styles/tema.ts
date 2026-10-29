@@ -1,17 +1,18 @@
 export const cores = {
-  primaria: "#A3E635",
-  primariaClara: "rgba(163, 230, 53, 0.12)",
+  primaria: "#FF7A45",
+  primariaClara: "rgba(255, 122, 69, 0.14)",
   textoSobrePrimaria: "#0B0F14",
 
   fundo: "#0B0F14",
-  cartao: "#151B23",
-  superficie: "#222B36",
-  borda: "#2A3441",
+  cartao: "#131A22",
+  superficie: "#1C2530",
+  borda: "#243040",
 
-  texto: "#F3F4F6",
-  textoSecundario: "#9CA3AF",
+  texto: "#F5F7FA",
+  textoSecundario: "#8B97A7",
 
-  perigo: "#EF4444",
+  perigo: "#F0566A",
+  perigoClaro: "rgba(240, 86, 106, 0.12)",
   textoSobrePerigo: "#FFFFFF",
 } as const;
 
@@ -22,7 +23,8 @@ export const espacamentos = {
 } as const;
 
 export const raios = {
+  pequeno: 8,
   medio: 12,
-  grande: 16,
-  pilula: 20,
+  grande: 18,
+  pilula: 999,
 } as const;

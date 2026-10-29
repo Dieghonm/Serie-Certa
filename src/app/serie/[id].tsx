@@ -41,6 +41,10 @@ export default function DetalheSerie() {
     router.back();
   }
 
+  function concluir() {
+    router.replace("/");
+  }
+
   function mudar(exercicioId: string, campo: Campo, delta: number, minimo: number) {
     if (treino === undefined) return;
     const atual = treino.exercicios.find((e) => e.exercicioId === exercicioId);
@@ -108,34 +112,55 @@ export default function DetalheSerie() {
             </View>
           );
         })}
-      </ScrollView>
+      
+        {treino.arquivado ? (
+          <>
+            <Botao
+              titulo="Desarquivar"
+              onPress={() =>
+                Alert.alert(
+                  "Desarquivar série",
+                  "Quer mesmo desarquivar esta série?",
+                  [
+                    { text: "Cancelar", style: "cancel" },
+                    { text: "Desarquivar", onPress: arquivar },
+                  ]
+                )
+              }
+            />
+            <Botao
+              titulo="Excluir definitivamente"
+              variante="perigo"
+              onPress={() =>
+                Alert.alert(
+                  "Excluir série",
+                  "Isso apaga a série para sempre. Continuar?",
+                  [
+                    { text: "Cancelar", style: "cancel" },
+                    { text: "Excluir", style: "destructive", onPress: excluir },
+                  ]
+                )
+              }
+            />
+          </>
+        ) : (
+          <>
+            <Botao titulo="Concluir treino" onPress={concluir} />
+            <Botao
+              titulo="Arquivar"
+              variante="secundario"
+              onPress={() =>
+                Alert.alert("Arquivar série", "Quer mesmo arquivar esta série?", [
+                  { text: "Cancelar", style: "cancel" },
+                  { text: "Arquivar", onPress: arquivar },
+                ])
+              }
+            />
+          </>
+        )}
 
-      {treino.arquivado ? (
-        <Botao
-          titulo="Excluir definitivamente"
-          variante="perigo"
-          onPress={() =>
-            Alert.alert(
-              "Excluir série",
-              "Isso apaga a série para sempre. Continuar?",
-              [
-                { text: "Cancelar", style: "cancel" },
-                { text: "Excluir", style: "destructive", onPress: excluir },
-              ]
-            )
-          }
-        />
-      ) : (
-        <Botao
-          titulo="Arquivar"
-          onPress={() =>
-            Alert.alert("Arquivar série", "Quer mesmo arquivar esta série?", [
-              { text: "Cancelar", style: "cancel" },
-              { text: "Arquivar", onPress: arquivar },
-            ])
-          }
-        />
-      )}
+
+      </ScrollView>
     </View>
   );
 }

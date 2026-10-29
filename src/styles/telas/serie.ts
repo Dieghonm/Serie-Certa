@@ -4,13 +4,24 @@ import { cores, espacamentos, raios } from "@/styles/tema";
 export const estilosSerie = StyleSheet.create({
   container: {
     flex: 1,
-    padding: espacamentos.medio,
+    paddingHorizontal: espacamentos.medio,
+    paddingVertical: espacamentos.pequeno,
     gap: espacamentos.pequeno,
     backgroundColor: cores.fundo,
   },
-  lista: { gap: espacamentos.pequeno, paddingBottom: espacamentos.medio },
-  titulo: { fontSize: 26, fontWeight: "800", color: cores.texto },
-  subtitulo: { fontSize: 16, color: cores.textoSecundario },
+  lista: { gap: 12, paddingBottom: espacamentos.grande },
+  titulo: {
+    fontSize: 28,
+    fontWeight: "800",
+    color: cores.texto,
+    letterSpacing: 0.2,
+  },
+  subtitulo: {
+    fontSize: 15,
+    color: cores.primaria,
+    fontWeight: "600",
+    marginBottom: 4,
+  },
   mensagem: {
     color: cores.textoSecundario,
     textAlign: "center",
@@ -22,13 +33,13 @@ export const estilosSerie = StyleSheet.create({
     borderColor: cores.borda,
     borderRadius: raios.grande,
     padding: espacamentos.medio,
-    gap: espacamentos.pequeno,
+    gap: 12,
   },
   linhaTitulo: {
     flexDirection: "row",
     alignItems: "center",
     gap: espacamentos.pequeno,
   },
-  nomeExercicio: { flex: 1, fontSize: 16, fontWeight: "700", color: cores.texto },
-  descricao: { color: cores.textoSecundario, lineHeight: 20 },
+  nomeExercicio: { flex: 1, fontSize: 18, fontWeight: "700", color: cores.texto },
+  descricao: { color: cores.textoSecundario, lineHeight: 21 },
 });
