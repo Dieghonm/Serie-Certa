@@ -42,4 +42,26 @@ export const estilosSerie = StyleSheet.create({
   },
   nomeExercicio: { flex: 1, fontSize: 18, fontWeight: "700", color: cores.texto },
   descricao: { color: cores.textoSecundario, lineHeight: 21 },
+
+    numeroCaixa: {
+    width: 28,
+    height: 28,
+    borderRadius: raios.pilula,
+    backgroundColor: cores.primariaClara,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  numero: { color: cores.primaria, fontWeight: "800", fontSize: 14 },
+  botaoOrdem: {
+    width: 36,
+    height: 36,
+    borderRadius: raios.medio,
+    backgroundColor: cores.superficie,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  botaoOrdemDesativado: { opacity: 0.3 },
+  textoBotaoOrdem: { color: cores.primaria, fontSize: 13 },
 });

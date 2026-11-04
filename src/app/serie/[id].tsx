@@ -1,18 +1,22 @@
 import { useCallback, useState } from "react";
-import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
-import { Alert, ScrollView, Text, View } from "react-native";
+import { Stack, router, useFocusEffect, useLocalSearchParams } from "expo-router";
+
+import { Alert, Pressable, ScrollView, Text, View } from "react-native";
 import { Botao } from "@/components/Botao";
 import { Contador } from "@/components/contador";
 import {
   arquivarTreino,
+  atualizarDescanso,
   atualizarExercicio,
   buscarTreino,
   excluirTreino,
+  reordenarExercicios,
 } from "@/utils/armazenamento";
 import { buscarPorId } from "@/utils/exercicios";
-import { ExercicioDoTreino, Treino } from "@/types/treino";
 import { estilosSerie } from "@/styles/telas/serie";
 import { ImagemExercicio } from "@/components/ImagemExercicio";
+import { Cronometro } from "@/components/cronometro";
+import { DESCANSO_PADRAO, ExercicioDoTreino, Treino } from "@/types/treino";
 
 type Campo = keyof Omit<ExercicioDoTreino, "exercicioId">;
 
@@ -61,6 +65,24 @@ export default function DetalheSerie() {
     atualizarExercicio(treino.id, exercicioId, campo, novoValor);
   }
 
+  function mover(indice: number, delta: -1 | 1) {
+    if (treino === undefined) return;
+    const destino = indice + delta;
+    if (destino < 0 || destino >= treino.exercicios.length) return;
+
+    const novos = [...treino.exercicios];
+    [novos[indice], novos[destino]] = [novos[destino], novos[indice]];
+
+    setTreino({ ...treino, exercicios: novos });
+    reordenarExercicios(treino.id, novos);
+  }
+
+  function mudarDescanso(segundos: number) {
+    if (treino === undefined) return;
+    setTreino({ ...treino, descanso: segundos });
+    atualizarDescanso(treino.id, segundos);
+  }
+
   if (treino === undefined) {
     return (
       <View style={estilosSerie.container}>
@@ -73,20 +95,63 @@ export default function DetalheSerie() {
 
   return (
     <View style={estilosSerie.container}>
+      <Stack.Screen
+        options={{
+          headerRight: treino.arquivado
+            ? undefined
+            : () => (
+                <Cronometro
+                  duracao={treino.descanso ?? DESCANSO_PADRAO}
+                  onMudarDuracao={mudarDescanso}
+                />
+              ),
+        }}
+      />
       <Text style={estilosSerie.titulo}>{treino.nome}</Text>
       <Text style={estilosSerie.subtitulo}>
         {treino.exercicios.length} exercícios
       </Text>
 
       <ScrollView contentContainerStyle={estilosSerie.lista}>
-        {treino.exercicios.map((item) => {
+        {treino.exercicios.map((item, indice) => {
           const exercicio = buscarPorId(item.exercicioId);
           if (exercicio === undefined) return null;
 
           return (
             <View key={item.exercicioId} style={estilosSerie.cartaoExercicio}>
-              
-              <Text style={estilosSerie.nomeExercicio}>{exercicio.nome}</Text>
+              <View style={estilosSerie.linhaTitulo}>
+                <View style={estilosSerie.numeroCaixa}>
+                  <Text style={estilosSerie.numero}>{indice + 1}</Text>
+                </View>
+                <Text style={estilosSerie.nomeExercicio}>{exercicio.nome}</Text>
+
+                {!treino.arquivado && (
+                  <>
+                    <Pressable
+                      onPress={() => mover(indice, -1)}
+                      disabled={indice === 0}
+                      style={[
+                        estilosSerie.botaoOrdem,
+                        indice === 0 && estilosSerie.botaoOrdemDesativado,
+                      ]}
+                    >
+                      <Text style={estilosSerie.textoBotaoOrdem}>▲</Text>
+                    </Pressable>
+                    <Pressable
+                      onPress={() => mover(indice, 1)}
+                      disabled={indice === treino.exercicios.length - 1}
+                      style={[
+                        estilosSerie.botaoOrdem,
+                        indice === treino.exercicios.length - 1 &&
+                          estilosSerie.botaoOrdemDesativado,
+                      ]}
+                    >
+                      <Text style={estilosSerie.textoBotaoOrdem}>▼</Text>
+                    </Pressable>
+                  </>
+                )}
+              </View>
+
               <ImagemExercicio uri={exercicio.img} />
               <Text style={estilosSerie.descricao}>{exercicio.descricao}</Text>
 

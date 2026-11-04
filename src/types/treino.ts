@@ -5,10 +5,13 @@ export type ExercicioDoTreino = {
   carga: number;
 };
 
+export const DESCANSO_PADRAO = 60;
+
 export type Treino = {
   id: string;
   nome: string;
   arquivado: boolean;
   criadoEm: string;
   exercicios: ExercicioDoTreino[];
+  descanso?: number;
 };

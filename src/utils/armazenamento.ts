@@ -56,3 +56,25 @@ export async function atualizarExercicio(
   );
   await salvarTreinos(atualizados);
 }
+
+export async function reordenarExercicios(
+  treinoId: string,
+  exercicios: ExercicioDoTreino[],
+): Promise<void> {
+  const treinos = await listarTreinos();
+  const atualizados = treinos.map((t) =>
+    t.id === treinoId ? { ...t, exercicios } : t,
+  );
+  await salvarTreinos(atualizados);
+}
+
+export async function atualizarDescanso(
+  treinoId: string,
+  descanso: number,
+): Promise<void> {
+  const treinos = await listarTreinos();
+  const atualizados = treinos.map((t) =>
+    t.id === treinoId ? { ...t, descanso } : t,
+  );
+  await salvarTreinos(atualizados);
+}
