@@ -1,24 +1,71 @@
 import { useCallback, useState } from "react";
 import { Stack, router, useFocusEffect, useLocalSearchParams } from "expo-router";
-
 import { Alert, Pressable, ScrollView, Text, View } from "react-native";
 import { Botao } from "@/components/Botao";
 import { Contador } from "@/components/contador";
+import { Cronometro } from "@/components/cronometro";
+import { ImagemExercicio } from "@/components/ImagemExercicio";
 import {
-  arquivarTreino,
-  atualizarDescanso,
-  atualizarExercicio,
+  atualizarTreino,
   buscarTreino,
   excluirTreino,
-  reordenarExercicios,
 } from "@/utils/armazenamento";
 import { buscarPorId } from "@/utils/exercicios";
 import { estilosSerie } from "@/styles/telas/serie";
-import { ImagemExercicio } from "@/components/ImagemExercicio";
-import { Cronometro } from "@/components/cronometro";
 import { DESCANSO_PADRAO, ExercicioDoTreino, Treino } from "@/types/treino";
 
 type Campo = keyof Omit<ExercicioDoTreino, "exercicioId">;
+
+type ConfigCampo = {
+  campo: Campo;
+  rotulo: string;
+  minimo: number;
+  unidade?: string;
+};
+
+const CAMPOS: ConfigCampo[] = [
+  { campo: "series", rotulo: "Séries", minimo: 1 },
+  { campo: "repeticoes", rotulo: "Repetições", minimo: 1 },
+  { campo: "carga", rotulo: "Carga", minimo: 0, unidade: " kg" },
+];
+
+function confirmar(
+  titulo: string,
+  mensagem: string,
+  acao: string,
+  aoConfirmar: () => void,
+  destrutivo = false
+) {
+  Alert.alert(titulo, mensagem, [
+    { text: "Cancelar", style: "cancel" },
+    {
+      text: acao,
+      style: destrutivo ? "destructive" : "default",
+      onPress: aoConfirmar,
+    },
+  ]);
+}
+
+type PropsBotaoOrdem = {
+  simbolo: string;
+  desativado: boolean;
+  onPress: () => void;
+};
+
+function BotaoOrdem({ simbolo, desativado, onPress }: PropsBotaoOrdem) {
+  return (
+    <Pressable
+      onPress={onPress}
+      disabled={desativado}
+      style={[
+        estilosSerie.botaoOrdem,
+        desativado && estilosSerie.botaoOrdemDesativado,
+      ]}
+    >
+      <Text style={estilosSerie.textoBotaoOrdem}>{simbolo}</Text>
+    </Pressable>
+  );
+}
 
 export default function DetalheSerie() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -35,8 +82,15 @@ export default function DetalheSerie() {
     }, [id])
   );
 
-  async function arquivar() {
-    await arquivarTreino(id);
+  async function atualizar(alteracoes: Partial<Treino>) {
+    if (treino === undefined) return;
+    setTreino({ ...treino, ...alteracoes });
+    await atualizarTreino(treino.id, alteracoes);
+  }
+
+  async function alternarArquivamento() {
+    if (treino === undefined) return;
+    await atualizar({ arquivado: !treino.arquivado });
     router.back();
   }
 
@@ -49,20 +103,15 @@ export default function DetalheSerie() {
     router.replace("/");
   }
 
-  function mudar(exercicioId: string, campo: Campo, delta: number, minimo: number) {
+  function mudar(exercicioId: string, config: ConfigCampo, delta: number) {
     if (treino === undefined) return;
-    const atual = treino.exercicios.find((e) => e.exercicioId === exercicioId);
-    if (atual === undefined) return;
-
-    const novoValor = Math.max(minimo, atual[campo] + delta);
-
-    setTreino({
-      ...treino,
+    atualizar({
       exercicios: treino.exercicios.map((e) =>
-        e.exercicioId === exercicioId ? { ...e, [campo]: novoValor } : e
+        e.exercicioId === exercicioId
+          ? { ...e, [config.campo]: Math.max(config.minimo, e[config.campo] + delta) }
+          : e
       ),
     });
-    atualizarExercicio(treino.id, exercicioId, campo, novoValor);
   }
 
   function mover(indice: number, delta: -1 | 1) {
@@ -72,15 +121,7 @@ export default function DetalheSerie() {
 
     const novos = [...treino.exercicios];
     [novos[indice], novos[destino]] = [novos[destino], novos[indice]];
-
-    setTreino({ ...treino, exercicios: novos });
-    reordenarExercicios(treino.id, novos);
-  }
-
-  function mudarDescanso(segundos: number) {
-    if (treino === undefined) return;
-    setTreino({ ...treino, descanso: segundos });
-    atualizarDescanso(treino.id, segundos);
+    atualizar({ exercicios: novos });
   }
 
   if (treino === undefined) {
@@ -93,27 +134,29 @@ export default function DetalheSerie() {
     );
   }
 
+  const { nome, arquivado, exercicios, descanso } = treino;
+  const ultimo = exercicios.length - 1;
+
   return (
     <View style={estilosSerie.container}>
       <Stack.Screen
         options={{
-          headerRight: treino.arquivado
+          headerRight: arquivado
             ? undefined
             : () => (
                 <Cronometro
-                  duracao={treino.descanso ?? DESCANSO_PADRAO}
-                  onMudarDuracao={mudarDescanso}
+                  duracao={descanso ?? DESCANSO_PADRAO}
+                  onMudarDuracao={(segundos) => atualizar({ descanso: segundos })}
                 />
               ),
         }}
       />
-      <Text style={estilosSerie.titulo}>{treino.nome}</Text>
-      <Text style={estilosSerie.subtitulo}>
-        {treino.exercicios.length} exercícios
-      </Text>
+
+      <Text style={estilosSerie.titulo}>{nome}</Text>
+      <Text style={estilosSerie.subtitulo}>{exercicios.length} exercícios</Text>
 
       <ScrollView contentContainerStyle={estilosSerie.lista}>
-        {treino.exercicios.map((item, indice) => {
+        {exercicios.map((item, indice) => {
           const exercicio = buscarPorId(item.exercicioId);
           if (exercicio === undefined) return null;
 
@@ -125,29 +168,18 @@ export default function DetalheSerie() {
                 </View>
                 <Text style={estilosSerie.nomeExercicio}>{exercicio.nome}</Text>
 
-                {!treino.arquivado && (
+                {!arquivado && (
                   <>
-                    <Pressable
+                    <BotaoOrdem
+                      simbolo="▲"
+                      desativado={indice === 0}
                       onPress={() => mover(indice, -1)}
-                      disabled={indice === 0}
-                      style={[
-                        estilosSerie.botaoOrdem,
-                        indice === 0 && estilosSerie.botaoOrdemDesativado,
-                      ]}
-                    >
-                      <Text style={estilosSerie.textoBotaoOrdem}>▲</Text>
-                    </Pressable>
-                    <Pressable
+                    />
+                    <BotaoOrdem
+                      simbolo="▼"
+                      desativado={indice === ultimo}
                       onPress={() => mover(indice, 1)}
-                      disabled={indice === treino.exercicios.length - 1}
-                      style={[
-                        estilosSerie.botaoOrdem,
-                        indice === treino.exercicios.length - 1 &&
-                          estilosSerie.botaoOrdemDesativado,
-                      ]}
-                    >
-                      <Text style={estilosSerie.textoBotaoOrdem}>▼</Text>
-                    </Pressable>
+                    />
                   </>
                 )}
               </View>
@@ -155,41 +187,30 @@ export default function DetalheSerie() {
               <ImagemExercicio uri={exercicio.img} />
               <Text style={estilosSerie.descricao}>{exercicio.descricao}</Text>
 
-              <Contador
-                rotulo="Séries"
-                valor={item.series}
-                onMenos={() => mudar(item.exercicioId, "series", -1, 1)}
-                onMais={() => mudar(item.exercicioId, "series", 1, 1)}
-              />
-              <Contador
-                rotulo="Repetições"
-                valor={item.repeticoes}
-                onMenos={() => mudar(item.exercicioId, "repeticoes", -1, 1)}
-                onMais={() => mudar(item.exercicioId, "repeticoes", 1, 1)}
-              />
-              <Contador
-                rotulo="Carga"
-                valor={item.carga}
-                unidade=" kg"
-                onMenos={() => mudar(item.exercicioId, "carga", -1, 0)}
-                onMais={() => mudar(item.exercicioId, "carga", 1, 0)}
-              />
+              {CAMPOS.map((config) => (
+                <Contador
+                  key={config.campo}
+                  rotulo={config.rotulo}
+                  valor={item[config.campo]}
+                  unidade={config.unidade}
+                  onMenos={() => mudar(item.exercicioId, config, -1)}
+                  onMais={() => mudar(item.exercicioId, config, 1)}
+                />
+              ))}
             </View>
           );
         })}
-      
-        {treino.arquivado ? (
+
+        {arquivado ? (
           <>
             <Botao
               titulo="Desarquivar"
               onPress={() =>
-                Alert.alert(
+                confirmar(
                   "Desarquivar série",
                   "Quer mesmo desarquivar esta série?",
-                  [
-                    { text: "Cancelar", style: "cancel" },
-                    { text: "Desarquivar", onPress: arquivar },
-                  ]
+                  "Desarquivar",
+                  alternarArquivamento
                 )
               }
             />
@@ -197,13 +218,12 @@ export default function DetalheSerie() {
               titulo="Excluir definitivamente"
               variante="perigo"
               onPress={() =>
-                Alert.alert(
+                confirmar(
                   "Excluir série",
                   "Isso apaga a série para sempre. Continuar?",
-                  [
-                    { text: "Cancelar", style: "cancel" },
-                    { text: "Excluir", style: "destructive", onPress: excluir },
-                  ]
+                  "Excluir",
+                  excluir,
+                  true
                 )
               }
             />
@@ -215,16 +235,16 @@ export default function DetalheSerie() {
               titulo="Arquivar"
               variante="secundario"
               onPress={() =>
-                Alert.alert("Arquivar série", "Quer mesmo arquivar esta série?", [
-                  { text: "Cancelar", style: "cancel" },
-                  { text: "Arquivar", onPress: arquivar },
-                ])
+                confirmar(
+                  "Arquivar série",
+                  "Quer mesmo arquivar esta série?",
+                  "Arquivar",
+                  alternarArquivamento
+                )
               }
             />
           </>
         )}
-
-
       </ScrollView>
     </View>
   );

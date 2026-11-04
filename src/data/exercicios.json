@@ -141,9 +141,17 @@
     "id": "crucifixo-reto",
     "nome": "Crucifixo reto",
     "descricao": "Deitado com os halteres acima do peito, abra os braços com cotovelos levemente flexionados e feche de volta.",
-    "img": "",
+    "img": "https://static.strengthlevel.com/images/exercises/dumbbell-fly/dumbbell-fly-800.jpg",
     "grupoPrincipal": "peito",
-    "gruposSecundarios": []
+    "gruposSecundarios": ["biceps", "ombros"]
+  },
+  {
+    "id": "crucifixo-inclinado",
+    "nome": "Crucifixo inclinado",
+    "descricao": "com o banco em 45 graus, deite com os halteres acima do peito, abra os braços com cotovelos levemente flexionados e feche de volta.",
+    "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2020/06/dumbbell-incline-fly.gif",
+    "grupoPrincipal": "peito",
+    "gruposSecundarios": ["biceps", "ombros"]
   },
   {
     "id": "crossover",
@@ -325,7 +333,7 @@
     "id": "abdominal-crunch",
     "nome": "Abdominal crunch",
     "descricao": "Deitado com os joelhos flexionados, eleve os ombros do chão contraindo o abdômen, sem puxar o pescoço.",
-    "img": "",
+    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2023/02/47271301-abdominal-supra.gif",
     "grupoPrincipal": "core",
     "gruposSecundarios": []
   },
@@ -341,7 +349,7 @@
     "id": "prancha-lateral",
     "nome": "Prancha lateral",
     "descricao": "Apoiado em um antebraço e na lateral do pé, mantenha o corpo alinhado e o quadril elevado.",
-    "img": "",
+    "img": "https://www.repcountapp.com/images/exercises/side-plank.jpg",
     "grupoPrincipal": "core",
     "gruposSecundarios": [
       "obliquos"
@@ -351,7 +359,7 @@
     "id": "elevacao-de-pernas",
     "nome": "Elevação de pernas",
     "descricao": "Deitado ou pendurado na barra, eleve as pernas até a altura do quadril com o abdômen contraído e desça devagar.",
-    "img": "",
+    "img": "https://www.lyfta.app/_next/image?url=https%3A%2F%2Flyfta.app%2Fimages%2Fexercises%2F08261101.png&w=640&q=80",
     "grupoPrincipal": "core",
     "gruposSecundarios": []
   },
@@ -531,6 +539,23 @@
     "gruposSecundarios": [
       "gluteos",
       "costas"
+    ]
+  },  {
+    "id": "triceps-maquina",
+    "nome": "Tríceps na máquina",
+    "descricao": "Sentado na máquina, com as costas apoiadas, empurre as manoplas para baixo estendendo os cotovelos e retorne devagar.",
+    "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2021/07/triceps-sentado-no-aparelho.gif",
+    "grupoPrincipal": "triceps",
+    "gruposSecundarios": []
+  },
+  {
+    "id": "coice-polia",
+    "nome": "Coice na polia (glúteo)",
+    "descricao": "Com a tornozeleira na polia baixa e as mãos apoiadas, leve a perna para trás e para cima contraindo o glúteo, sem arquear a lombar, e retorne com controle.",
+    "img": "https://karoldeliberato.com.br/wp-content/uploads/2023/04/image32-1.gif",
+    "grupoPrincipal": "pernas",
+    "gruposSecundarios": [
+      "gluteos"
     ]
   }
 ]

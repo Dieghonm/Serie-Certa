@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { router, useFocusEffect } from "expo-router";
 import { FlatList, Text, View } from "react-native";
-import { listarTreinos } from "@/utils/armazenamento";
+import { listarTreinos, prepararSeriesIniciais } from "@/utils/armazenamento";
 import { Treino } from "@/types/treino";
 import { estilosInicio } from "@/styles/telas/inicio";
 import { Botao } from "@/components/Botao";
@@ -13,6 +13,7 @@ export default function Inicio() {
   useFocusEffect(
     useCallback(() => {
       async function carregar() {
+        await prepararSeriesIniciais();
         const todos = await listarTreinos();
         setTreinos(todos.filter((t) => !t.arquivado));
       }
