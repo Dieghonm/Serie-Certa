@@ -4,8 +4,10 @@ import { cores, espacamentos } from "@/styles/tema";
 export const estilosHistorico = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: espacamentos.medio,
-    paddingVertical: espacamentos.pequeno,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 55,
+    paddingLeft: 20,
     backgroundColor: cores.fundo,
   },
   lista: { gap: 12 },

@@ -4,8 +4,10 @@ import { cores, espacamentos, raios } from "@/styles/tema";
 export const estilosSerie = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: espacamentos.medio,
-    paddingVertical: espacamentos.pequeno,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 30,
+    paddingLeft: 20,
     gap: espacamentos.pequeno,
     backgroundColor: cores.fundo,
   },

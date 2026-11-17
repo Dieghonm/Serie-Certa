@@ -1,6 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { criarSeriesIniciais } from "@/data/seriesIniciais";
-import { Treino } from "@/types/treino";
+import { Conclusao, Treino } from "@/types/treino";
+import { chaveHoje } from "@/utils/datas";
+
+const CHAVE_CONCLUSOES = "serie-certa:conclusoes";
 
 const CHAVE = "serie-certa:treinos";
 const CHAVE_INICIAIS = "serie-certa:series-iniciais";
@@ -45,4 +48,22 @@ export async function atualizarTreino(
 export async function excluirTreino(id: string): Promise<void> {
   const treinos = await listarTreinos();
   await salvarTreinos(treinos.filter((t) => t.id !== id));
+}
+
+export async function listarConclusoes(): Promise<Conclusao[]> {
+  const texto = await AsyncStorage.getItem(CHAVE_CONCLUSOES);
+  return texto === null ? [] : (JSON.parse(texto) as Conclusao[]);
+}
+
+export async function registrarConclusao(nome: string): Promise<void> {
+  const conclusoes = await listarConclusoes();
+  const nova: Conclusao = {
+    id: Date.now().toString(),
+    data: chaveHoje(),
+    nome,
+  };
+  await AsyncStorage.setItem(
+    CHAVE_CONCLUSOES,
+    JSON.stringify([...conclusoes, nova]),
+  );
 }

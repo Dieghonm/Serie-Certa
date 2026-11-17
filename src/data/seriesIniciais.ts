@@ -16,12 +16,12 @@ export function criarSeriesIniciais(): Treino[] {
       exercicios: [
         ex("agachamento-sumo", 4, 12),
         ex("leg-press", 4, 12),
+        ex("panturrilha-em-pe", 4, 15),
         ex("afundo"),
         ex("stiff"),
         ex("mesa-flexora"),
         ex("elevacao-pelvica", 4, 12),
         ex("coice-polia", 3, 15),
-        ex("panturrilha-em-pe", 4, 15),
         ex("prancha", 3, 30),
         ex("prancha-lateral", 3, 30),
       ],

@@ -15,3 +15,9 @@ export type Treino = {
   exercicios: ExercicioDoTreino[];
   descanso?: number;
 };
+
+export type Conclusao = {
+  id: string;
+  data: string;
+  nome: string;
+};

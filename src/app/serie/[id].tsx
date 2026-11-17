@@ -9,6 +9,7 @@ import {
   atualizarTreino,
   buscarTreino,
   excluirTreino,
+  registrarConclusao,
 } from "@/utils/armazenamento";
 import { buscarPorId } from "@/utils/exercicios";
 import { estilosSerie } from "@/styles/telas/serie";
@@ -99,7 +100,9 @@ export default function DetalheSerie() {
     router.back();
   }
 
-  function concluir() {
+  async function concluir() {
+    if (treino === undefined) return;
+    await registrarConclusao(treino.nome);
     router.replace("/");
   }
 

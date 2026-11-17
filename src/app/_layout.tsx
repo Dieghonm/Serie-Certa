@@ -19,6 +19,7 @@ export default function RootLayout() {
         <Stack.Screen name="montar" options={{ title: "Montar série" }} />
         <Stack.Screen name="historico" options={{ title: "Histórico" }} />
         <Stack.Screen name="serie/[id]" options={{ title: "Série" }} />
+        <Stack.Screen name="calendario" options={{ title: "Calendário" }} />
       </Stack>
     </>
   );
