@@ -1,14 +1,52 @@
-# Série Certa
+<h1 align="center">Série Certa</h1>
+
+<p align="center">
+  Monte seus treinos, acompanhe cada exercício e registre tudo no calendário.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Expo-SDK%2058-000020?logo=expo&logoColor=white" alt="Expo SDK 58" />
+  <img src="https://img.shields.io/badge/React%20Native-0.88-20232A?logo=react&logoColor=61DAFB" alt="React Native 0.88" />
+  <img src="https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
+</p>
 
 Aplicativo mobile para montar e acompanhar treinos de academia. Você cria suas séries de exercícios, ajusta séries, repetições e carga, usa um cronômetro de descanso e registra os treinos concluídos em um calendário.
 
 Feito com **React Native**, **TypeScript** e **Expo**. Todos os dados ficam salvos no próprio celular, sem conta e sem servidor.
 
-<p align="center">
-  <img src="docs/inicio.png" width="200" alt="Tela inicial" />
-  <img src="docs/serie.png" width="200" alt="Detalhe da série" />
-  <img src="docs/calendario.png" width="200" alt="Calendário" />
-</p>
+## Telas
+
+<table align="center">
+  <tr>
+    <td align="center" valign="top" width="33%">
+      <br />
+      <b>Início</b>
+      <br />
+      <sub>Suas séries e o calendário</sub>
+      <br /><br />
+      <img src="docs/inicio.jpeg" width="200" alt="Tela inicial" />
+      <br /><br />
+    </td>
+    <td align="center" valign="top" width="33%">
+      <br />
+      <b>Treino</b>
+      <br />
+      <sub>Exercícios e cronômetro</sub>
+      <br /><br />
+      <img src="docs/serie.jpeg" width="200" alt="Detalhe da série" />
+      <br /><br />
+    </td>
+    <td align="center" valign="top" width="33%">
+      <br />
+      <b>Calendário</b>
+      <br />
+      <sub>Treinos de cada dia</sub>
+      <br /><br />
+      <img src="docs/calendario.jpeg" width="200" alt="Calendário" />
+      <br /><br />
+    </td>
+  </tr>
+</table>
 
 ## Funcionalidades
 
