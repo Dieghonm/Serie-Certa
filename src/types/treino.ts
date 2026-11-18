@@ -3,6 +3,7 @@ export type ExercicioDoTreino = {
   series: number;
   repeticoes: number;
   carga: number;
+  comentario?: string;
 };
 
 export const DESCANSO_PADRAO = 60;

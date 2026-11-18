@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 import { Stack, router, useFocusEffect, useLocalSearchParams } from "expo-router";
-import { Alert, Pressable, ScrollView, Text, View } from "react-native";
+import { Alert, ScrollView, Text, View } from "react-native";
 import { Botao } from "@/components/Botao";
-import { Contador } from "@/components/contador";
+import { CartaoExercicio } from "@/components/CartaoExercicio";
 import { Cronometro } from "@/components/cronometro";
-import { ImagemExercicio } from "@/components/ImagemExercicio";
+import { EditarExercicio } from "@/components/EditarExercicio";
 import {
   atualizarTreino,
   buscarTreino,
@@ -14,21 +14,6 @@ import {
 import { buscarPorId } from "@/utils/exercicios";
 import { estilosSerie } from "@/styles/telas/serie";
 import { DESCANSO_PADRAO, ExercicioDoTreino, Treino } from "@/types/treino";
-
-type Campo = keyof Omit<ExercicioDoTreino, "exercicioId">;
-
-type ConfigCampo = {
-  campo: Campo;
-  rotulo: string;
-  minimo: number;
-  unidade?: string;
-};
-
-const CAMPOS: ConfigCampo[] = [
-  { campo: "series", rotulo: "Séries", minimo: 1 },
-  { campo: "repeticoes", rotulo: "Repetições", minimo: 1 },
-  { campo: "carga", rotulo: "Carga", minimo: 0, unidade: " kg" },
-];
 
 function confirmar(
   titulo: string,
@@ -47,31 +32,12 @@ function confirmar(
   ]);
 }
 
-type PropsBotaoOrdem = {
-  simbolo: string;
-  desativado: boolean;
-  onPress: () => void;
-};
-
-function BotaoOrdem({ simbolo, desativado, onPress }: PropsBotaoOrdem) {
-  return (
-    <Pressable
-      onPress={onPress}
-      disabled={desativado}
-      style={[
-        estilosSerie.botaoOrdem,
-        desativado && estilosSerie.botaoOrdemDesativado,
-      ]}
-    >
-      <Text style={estilosSerie.textoBotaoOrdem}>{simbolo}</Text>
-    </Pressable>
-  );
-}
-
 export default function DetalheSerie() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [treino, setTreino] = useState<Treino | undefined>(undefined);
   const [carregando, setCarregando] = useState(true);
+  const [editandoId, setEditandoId] = useState<string | null>(null);
+  const [concluidos, setConcluidos] = useState<string[]>([]);
 
   useFocusEffect(
     useCallback(() => {
@@ -106,15 +72,25 @@ export default function DetalheSerie() {
     router.replace("/");
   }
 
-  function mudar(exercicioId: string, config: ConfigCampo, delta: number) {
+  function alternarConcluido(exercicioId: string) {
+    setConcluidos((atual) =>
+      atual.includes(exercicioId)
+        ? atual.filter((item) => item !== exercicioId)
+        : [...atual, exercicioId]
+    );
+  }
+
+  function salvarExercicio(
+    exercicioId: string,
+    alteracoes: Partial<ExercicioDoTreino>
+  ) {
     if (treino === undefined) return;
     atualizar({
       exercicios: treino.exercicios.map((e) =>
-        e.exercicioId === exercicioId
-          ? { ...e, [config.campo]: Math.max(config.minimo, e[config.campo] + delta) }
-          : e
+        e.exercicioId === exercicioId ? { ...e, ...alteracoes } : e
       ),
     });
+    setEditandoId(null);
   }
 
   function mover(indice: number, delta: -1 | 1) {
@@ -138,7 +114,10 @@ export default function DetalheSerie() {
   }
 
   const { nome, arquivado, exercicios, descanso } = treino;
-  const ultimo = exercicios.length - 1;
+  const feitos = exercicios.filter((e) => concluidos.includes(e.exercicioId)).length;
+  const podeConcluir = feitos > exercicios.length / 2;
+  const indiceEditando = exercicios.findIndex((e) => e.exercicioId === editandoId);
+  const itemEditando = exercicios.find((e) => e.exercicioId === editandoId);
 
   return (
     <View style={estilosSerie.container}>
@@ -164,43 +143,16 @@ export default function DetalheSerie() {
           if (exercicio === undefined) return null;
 
           return (
-            <View key={item.exercicioId} style={estilosSerie.cartaoExercicio}>
-              <View style={estilosSerie.linhaTitulo}>
-                <View style={estilosSerie.numeroCaixa}>
-                  <Text style={estilosSerie.numero}>{indice + 1}</Text>
-                </View>
-                <Text style={estilosSerie.nomeExercicio}>{exercicio.nome}</Text>
-
-                {!arquivado && (
-                  <>
-                    <BotaoOrdem
-                      simbolo="▲"
-                      desativado={indice === 0}
-                      onPress={() => mover(indice, -1)}
-                    />
-                    <BotaoOrdem
-                      simbolo="▼"
-                      desativado={indice === ultimo}
-                      onPress={() => mover(indice, 1)}
-                    />
-                  </>
-                )}
-              </View>
-
-              <ImagemExercicio uri={exercicio.img} />
-              <Text style={estilosSerie.descricao}>{exercicio.descricao}</Text>
-
-              {CAMPOS.map((config) => (
-                <Contador
-                  key={config.campo}
-                  rotulo={config.rotulo}
-                  valor={item[config.campo]}
-                  unidade={config.unidade}
-                  onMenos={() => mudar(item.exercicioId, config, -1)}
-                  onMais={() => mudar(item.exercicioId, config, 1)}
-                />
-              ))}
-            </View>
+            <CartaoExercicio
+              key={item.exercicioId}
+              numero={indice + 1}
+              exercicio={exercicio}
+              item={item}
+              editavel={!arquivado}
+              concluido={concluidos.includes(item.exercicioId)}
+              onEditar={() => setEditandoId(item.exercicioId)}
+              onAlternarConcluido={() => alternarConcluido(item.exercicioId)}
+            />
           );
         })}
 
@@ -233,7 +185,22 @@ export default function DetalheSerie() {
           </>
         ) : (
           <>
-            <Botao titulo="Concluir treino" onPress={concluir} />
+                        {podeConcluir ? (
+              <Botao titulo="Concluir treino" onPress={concluir} />
+            ) : (
+              <Botao
+                titulo="Sair sem concluir"
+                variante="secundario"
+                onPress={() => router.replace("/")}
+              />
+            )}
+            <Botao
+              titulo="Editar série"
+              variante="secundario"
+              onPress={() =>
+                router.push({ pathname: "/montar", params: { id } })
+              }
+            />
             <Botao
               titulo="Arquivar"
               variante="secundario"
@@ -249,6 +216,22 @@ export default function DetalheSerie() {
           </>
         )}
       </ScrollView>
+
+      {itemEditando !== undefined && (
+        <EditarExercicio
+          key={itemEditando.exercicioId}
+          nome={buscarPorId(itemEditando.exercicioId)?.nome ?? ""}
+          item={itemEditando}
+          posicao={indiceEditando + 1}
+          total={exercicios.length}
+          onSubir={() => mover(indiceEditando, -1)}
+          onDescer={() => mover(indiceEditando, 1)}
+          onSalvar={(alteracoes) =>
+            salvarExercicio(itemEditando.exercicioId, alteracoes)
+          }
+          onFechar={() => setEditandoId(null)}
+        />
+      )}
     </View>
   );
 }

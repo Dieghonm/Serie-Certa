@@ -36,7 +36,11 @@ export const estilosCronometro = StyleSheet.create({
   },
   textoPlay: { color: cores.textoSobrePrimaria, fontSize: 12, fontWeight: "800" },
 
-    container: { alignItems: "center", gap: 2 },
+  container: {
+    alignItems: "center",
+    gap: 2,
+    marginRight: 20,
+  },
   titulo: {
     color: cores.textoSecundario,
     fontSize: 10,
