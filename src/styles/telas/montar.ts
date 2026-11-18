@@ -81,4 +81,5 @@ export const estilosMontar = StyleSheet.create({
     letterSpacing: 0.8,
   },
   vazio: { textAlign: "center", padding: 24, color: cores.textoSecundario },
+  cabecalhoLista: { gap: espacamentos.pequeno },
 });

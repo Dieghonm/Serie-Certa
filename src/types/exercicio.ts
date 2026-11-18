@@ -5,4 +5,5 @@ export type Exercicio = {
   img: string;
   grupoPrincipal: string;
   gruposSecundarios: string[];
+  emSegundos?: boolean;
 };

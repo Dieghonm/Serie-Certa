@@ -19,6 +19,7 @@ import { cores } from "@/styles/tema";
 type Props = {
   nome: string;
   item: ExercicioDoTreino;
+  emSegundos: boolean;
   posicao: number;
   total: number;
   onSubir: () => void;
@@ -29,15 +30,18 @@ type Props = {
 
 type PropsBotaoOrdem = {
   simbolo: string;
+  rotulo: string;
   desativado: boolean;
   onPress: () => void;
 };
 
-function BotaoOrdem({ simbolo, desativado, onPress }: PropsBotaoOrdem) {
+function BotaoOrdem({ simbolo, rotulo, desativado, onPress }: PropsBotaoOrdem) {
   return (
     <Pressable
       onPress={onPress}
       disabled={desativado}
+      accessibilityRole="button"
+      accessibilityLabel={rotulo}
       style={[estilos.botaoOrdem, desativado && estilos.botaoOrdemDesativado]}
     >
       <Text style={estilos.textoBotaoOrdem}>{simbolo}</Text>
@@ -48,6 +52,7 @@ function BotaoOrdem({ simbolo, desativado, onPress }: PropsBotaoOrdem) {
 export function EditarExercicio({
   nome,
   item,
+  emSegundos,
   posicao,
   total,
   onSubir,
@@ -59,6 +64,8 @@ export function EditarExercicio({
   const [repeticoes, setRepeticoes] = useState(item.repeticoes);
   const [carga, setCarga] = useState(String(item.carga).replace(".", ","));
   const [comentario, setComentario] = useState(item.comentario ?? "");
+
+  const passo = emSegundos ? 5 : 1;
 
   function salvar() {
     const numero = Number(carga.replace(",", "."));
@@ -93,12 +100,18 @@ export function EditarExercicio({
               <View style={estilos.linhaCampo}>
                 <Text style={estilos.rotulo}>Posição</Text>
                 <View style={estilos.controlesOrdem}>
-                  <BotaoOrdem simbolo="▲" desativado={posicao === 1} onPress={onSubir} />
+                  <BotaoOrdem
+                    simbolo="▲"
+                    rotulo="Mover para cima"
+                    desativado={posicao === 1}
+                    onPress={onSubir}
+                  />
                   <Text style={estilos.valorOrdem}>
                     {posicao}/{total}
                   </Text>
                   <BotaoOrdem
                     simbolo="▼"
+                    rotulo="Mover para baixo"
                     desativado={posicao === total}
                     onPress={onDescer}
                   />
@@ -117,10 +130,10 @@ export function EditarExercicio({
 
             <View style={estilos.linha}>
               <Contador
-                rotulo="Repetições"
+                rotulo={emSegundos ? "Segundos" : "Repetições"}
                 valor={repeticoes}
-                onMenos={() => setRepeticoes((v) => Math.max(1, v - 1))}
-                onMais={() => setRepeticoes((v) => v + 1)}
+                onMenos={() => setRepeticoes((v) => Math.max(1, v - passo))}
+                onMais={() => setRepeticoes((v) => v + passo)}
               />
             </View>
 

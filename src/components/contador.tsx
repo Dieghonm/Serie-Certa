@@ -14,14 +14,24 @@ export function Contador({ rotulo, valor, unidade = "", onMenos, onMais }: Props
     <View style={estilosContador.linha}>
       <Text style={estilosContador.rotulo}>{rotulo}</Text>
       <View style={estilosContador.controles}>
-        <Pressable style={estilosContador.botao} onPress={onMenos}>
+        <Pressable
+          style={estilosContador.botao}
+          onPress={onMenos}
+          accessibilityRole="button"
+          accessibilityLabel={`Diminuir ${rotulo.toLowerCase()}`}
+        >
           <Text style={estilosContador.textoBotao}>−</Text>
         </Pressable>
         <Text style={estilosContador.valor}>
           {valor}
           {unidade}
         </Text>
-        <Pressable style={estilosContador.botao} onPress={onMais}>
+        <Pressable
+          style={estilosContador.botao}
+          onPress={onMais}
+          accessibilityRole="button"
+          accessibilityLabel={`Aumentar ${rotulo.toLowerCase()}`}
+        >
           <Text style={estilosContador.textoBotao}>+</Text>
         </Pressable>
       </View>

@@ -3,18 +3,9 @@ import { criarSeriesIniciais } from "@/data/seriesIniciais";
 import { Conclusao, Treino } from "@/types/treino";
 import { chaveHoje } from "@/utils/datas";
 
-const CHAVE_CONCLUSOES = "serie-certa:conclusoes";
-
 const CHAVE = "serie-certa:treinos";
 const CHAVE_INICIAIS = "serie-certa:series-iniciais";
-
-export async function prepararSeriesIniciais(): Promise<void> {
-  if ((await AsyncStorage.getItem(CHAVE_INICIAIS)) !== null) return;
-
-  const treinos = await listarTreinos();
-  await salvarTreinos([...treinos, ...criarSeriesIniciais()]);
-  await AsyncStorage.setItem(CHAVE_INICIAIS, "1");
-}
+const CHAVE_CONCLUSOES = "serie-certa:conclusoes";
 
 export async function listarTreinos(): Promise<Treino[]> {
   const texto = await AsyncStorage.getItem(CHAVE);
@@ -23,6 +14,17 @@ export async function listarTreinos(): Promise<Treino[]> {
 
 async function salvarTreinos(treinos: Treino[]): Promise<void> {
   await AsyncStorage.setItem(CHAVE, JSON.stringify(treinos));
+}
+
+export async function prepararSeriesIniciais(): Promise<void> {
+  if ((await AsyncStorage.getItem(CHAVE_INICIAIS)) !== null) return;
+
+  const treinos = await listarTreinos();
+  const ids = new Set(treinos.map((t) => t.id));
+  const novas = criarSeriesIniciais().filter((t) => !ids.has(t.id));
+
+  await salvarTreinos([...treinos, ...novas]);
+  await AsyncStorage.setItem(CHAVE_INICIAIS, "1");
 }
 
 export async function buscarTreino(id: string): Promise<Treino | undefined> {

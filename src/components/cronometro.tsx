@@ -67,20 +67,38 @@ export function Cronometro({ duracao, onMudarDuracao }: Props) {
     <View style={estilosCronometro.container}>
       <Text style={estilosCronometro.titulo}>Descanso</Text>
       <View style={estilosCronometro.linha}>
-        <Pressable style={estilosCronometro.botao} onPress={() => ajustar(-PASSO)}>
+        <Pressable
+          style={estilosCronometro.botao}
+          onPress={() => ajustar(-PASSO)}
+          hitSlop={4}
+          accessibilityRole="button"
+          accessibilityLabel={`Diminuir ${PASSO} segundos`}
+        >
           <Text style={estilosCronometro.textoBotao}>‹</Text>
         </Pressable>
 
         <Text style={estilosCronometro.tempo}>{formatar(restante)}</Text>
 
-        <Pressable style={estilosCronometro.botao} onPress={() => ajustar(PASSO)}>
+        <Pressable
+          style={estilosCronometro.botao}
+          onPress={() => ajustar(PASSO)}
+          hitSlop={4}
+          accessibilityRole="button"
+          accessibilityLabel={`Aumentar ${PASSO} segundos`}
+        >
           <Text style={estilosCronometro.textoBotao}>›</Text>
         </Pressable>
 
-        <Pressable style={estilosCronometro.botaoPlay} onPress={alternar}>
+        <Pressable
+          style={estilosCronometro.botaoPlay}
+          onPress={alternar}
+          hitSlop={4}
+          accessibilityRole="button"
+          accessibilityLabel={rodando ? "Pausar descanso" : "Iniciar descanso"}
+        >
           <Text style={estilosCronometro.textoPlay}>{rodando ? "❚❚" : "▶"}</Text>
         </Pressable>
       </View>
     </View>
-  );
+  )
 }

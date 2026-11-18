@@ -1,22 +1,52 @@
-import { useState } from "react";
-import { router } from "expo-router";
-import { Alert, Pressable, ScrollView, Text, TextInput, View } from "react-native";
+import { useEffect, useState } from "react";
+import { Stack, router, useLocalSearchParams } from "expo-router";
+import {
+  Alert,
+  FlatList,
+  Pressable,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { Botao } from "@/components/Botao";
-import { criarTreino } from "@/utils/armazenamento";
-import { buscarTodos } from "@/utils/exercicios";
-import { Treino } from "@/types/treino";
-import { estilosMontar } from "@/styles/telas/montar";
 import { ImagemExercicio } from "@/components/ImagemExercicio";
+import {
+  atualizarTreino,
+  buscarTreino,
+  criarTreino,
+} from "@/utils/armazenamento";
+import { buscarTodos, nomeDoGrupo } from "@/utils/exercicios";
+import { Exercicio } from "@/types/exercicio";
+import { ExercicioDoTreino, Treino } from "@/types/treino";
+import { estilosMontar } from "@/styles/telas/montar";
 import { cores } from "@/styles/tema";
 
 const exercicios = buscarTodos();
 const grupos = ["Todos", ...new Set(exercicios.map((e) => e.grupoPrincipal))];
 
 export default function Montar() {
+  const { id } = useLocalSearchParams<{ id?: string }>();
+  const editando = id !== undefined;
+
   const [nome, setNome] = useState("");
+  const [existentes, setExistentes] = useState<ExercicioDoTreino[]>([]);
   const [selecionados, setSelecionados] = useState<string[]>([]);
   const [grupoAtivo, setGrupoAtivo] = useState("Todos");
   const [mostrarSelecionados, setMostrarSelecionados] = useState(false);
+
+  useEffect(() => {
+    if (id === undefined) return;
+
+    const carregar = async () => {
+      const treino = await buscarTreino(id);
+      if (treino === undefined) return;
+      setNome(treino.nome);
+      setExistentes(treino.exercicios);
+      setSelecionados(treino.exercicios.map((e) => e.exercicioId));
+    };
+    carregar();
+  }, [id]);
 
   const exerciciosFiltrados = exercicios.filter((exercicio) => {
     const grupoCorresponde =
@@ -26,9 +56,11 @@ export default function Montar() {
     return grupoCorresponde && selecaoCorresponde;
   });
 
-  function alternarSelecao(id: string) {
+  function alternarSelecao(exercicioId: string) {
     setSelecionados((atual) =>
-      atual.includes(id) ? atual.filter((item) => item !== id) : [...atual, id]
+      atual.includes(exercicioId)
+        ? atual.filter((item) => item !== exercicioId)
+        : [...atual, exercicioId]
     );
   }
 
@@ -44,25 +76,55 @@ export default function Montar() {
       return;
     }
 
-    const novo: Treino = {
-      id: Date.now().toString(),
-      nome: nomeLimpo,
-      arquivado: false,
-      criadoEm: new Date().toISOString(),
-      exercicios: selecionados.map((id) => ({
-        exercicioId: id,
-        series: 3,
-        repeticoes: 12,
-        carga: 0,
-      })),
-    };
+    const lista: ExercicioDoTreino[] = selecionados.map(
+      (exercicioId) =>
+        existentes.find((e) => e.exercicioId === exercicioId) ?? {
+          exercicioId,
+          series: 3,
+          repeticoes: 12,
+          carga: 0,
+        }
+    );
 
-    await criarTreino(novo);
+    if (id !== undefined) {
+      await atualizarTreino(id, { nome: nomeLimpo, exercicios: lista });
+    } else {
+      const novo: Treino = {
+        id: Date.now().toString(),
+        nome: nomeLimpo,
+        arquivado: false,
+        criadoEm: new Date().toISOString(),
+        exercicios: lista,
+      };
+      await criarTreino(novo);
+    }
+
     router.back();
   }
 
-  return (
-    <View style={estilosMontar.container}>
+  function renderizarExercicio({ item }: { item: Exercicio }) {
+    const selecionado = selecionados.includes(item.id);
+    return (
+      <Pressable
+        onPress={() => alternarSelecao(item.id)}
+        style={[
+          estilosMontar.cartao,
+          selecionado && estilosMontar.cartaoSelecionado,
+        ]}
+      >
+        <View style={estilosMontar.cartaoTopo}>
+          <Text style={estilosMontar.nomeExercicio}>{item.nome}</Text>
+          <Text style={estilosMontar.marcador}>{selecionado ? "☑" : "☐"}</Text>
+        </View>
+        <ImagemExercicio uri={item.img} animar={false} />
+        <Text style={estilosMontar.descricao}>{item.descricao}</Text>
+        <Text style={estilosMontar.grupo}>{nomeDoGrupo(item.grupoPrincipal)}</Text>
+      </Pressable>
+    );
+  }
+
+  const cabecalho = (
+    <View style={estilosMontar.cabecalhoLista}>
       <Text style={estilosMontar.rotulo}>Nome da série</Text>
       <TextInput
         style={estilosMontar.campo}
@@ -79,6 +141,7 @@ export default function Montar() {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
         style={estilosMontar.filtros}
       >
         <View style={estilosMontar.filtrosLinha}>
@@ -96,7 +159,7 @@ export default function Montar() {
                     ativo && estilosMontar.textoChipAtivo,
                   ]}
                 >
-                  {grupo}
+                  {nomeDoGrupo(grupo)}
                 </Text>
               </Pressable>
             );
@@ -113,39 +176,35 @@ export default function Montar() {
           Mostrar apenas selecionados ({selecionados.length})
         </Text>
       </Pressable>
+    </View>
+  );
 
-      <ScrollView
+  return (
+    <View style={estilosMontar.container}>
+      <Stack.Screen
+        options={{ title: editando ? "Editar série" : "Montar série" }}
+      />
+
+      <FlatList
         style={estilosMontar.lista}
         contentContainerStyle={estilosMontar.listaConteudo}
-      >
-        {exerciciosFiltrados.map((exercicio) => {
-          const selecionado = selecionados.includes(exercicio.id);
-          return (
-            <Pressable
-              key={exercicio.id}
-              onPress={() => alternarSelecao(exercicio.id)}
-              style={[
-                estilosMontar.cartao,
-                selecionado && estilosMontar.cartaoSelecionado,
-              ]}
-            >
-              <View style={estilosMontar.cartaoTopo}>
-                <Text style={estilosMontar.nomeExercicio}>{exercicio.nome}</Text>
-                <Text style={estilosMontar.marcador}>{selecionado ? "☑" : "☐"}</Text>
-              </View>
-              <ImagemExercicio uri={exercicio.img} animar={false} />
-              <Text style={estilosMontar.descricao}>{exercicio.descricao}</Text>
-              <Text style={estilosMontar.grupo}>{exercicio.grupoPrincipal}</Text>
-            </Pressable>
-          );
-        })}
-
-        {exerciciosFiltrados.length === 0 && (
+        data={exerciciosFiltrados}
+        extraData={selecionados}
+        keyExtractor={(e) => e.id}
+        renderItem={renderizarExercicio}
+        ListHeaderComponent={cabecalho}
+        ListEmptyComponent={
           <Text style={estilosMontar.vazio}>Nenhum exercício encontrado.</Text>
-        )}
-      </ScrollView>
+        }
+        keyboardShouldPersistTaps="handled"
+        initialNumToRender={6}
+        windowSize={5}
+      />
 
-      <Botao titulo="Salvar série" onPress={salvar} />
+      <Botao
+        titulo={editando ? "Salvar alterações" : "Salvar série"}
+        onPress={salvar}
+      />
     </View>
   );
 }

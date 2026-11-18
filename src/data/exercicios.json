@@ -51,8 +51,8 @@
   },
   {
     "id": "pulldown",
-    "nome": "Pulldown na polia",
-    "descricao": "Em pé na polia alta, com os braços quase estendidos, leve a barra até as coxas focando nas costas.",
+    "nome": "Pulldown na polia (corda)",
+    "descricao": "Em pé na polia alta com a corda, braços quase estendidos, leve as mãos até as coxas mantendo o foco nas costas.",
     "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2024/09/pulldown-corda.gif",
     "grupoPrincipal": "costas",
     "gruposSecundarios": []
@@ -148,7 +148,7 @@
   {
     "id": "crucifixo-inclinado",
     "nome": "Crucifixo inclinado",
-    "descricao": "com o banco em 45 graus, deite com os halteres acima do peito, abra os braços com cotovelos levemente flexionados e feche de volta.",
+    "descricao": "Com o banco em 45 graus, deite com os halteres acima do peito, abra os braços com cotovelos levemente flexionados e feche de volta.",
     "img": "https://www.hipertrofia.org/blog/wp-content/uploads/2020/06/dumbbell-incline-fly.gif",
     "grupoPrincipal": "peito",
     "gruposSecundarios": ["biceps", "ombros"]
@@ -330,8 +330,8 @@
     "gruposSecundarios": []
   },
   {
-    "id": "abdominal-crunch",
-    "nome": "Abdominal crunch",
+    "id": "abdominal-supra",
+    "nome": "Abdominal supra",
     "descricao": "Deitado com os joelhos flexionados, eleve os ombros do chão contraindo o abdômen, sem puxar o pescoço.",
     "img": "https://www.mundoboaforma.com.br/wp-content/uploads/2023/02/47271301-abdominal-supra.gif",
     "grupoPrincipal": "core",
@@ -343,6 +343,7 @@
     "descricao": "Apoiado nos antebraços e nas pontas dos pés, mantenha o corpo reto e o abdômen contraído pelo tempo definido.",
     "img": "https://image.tuasaude.com/media/article/wh/eu/treino-costas_73941.gif?width=1372&height=974",
     "grupoPrincipal": "core",
+    "emSegundos": true,
     "gruposSecundarios": []
   },
   {
@@ -351,13 +352,14 @@
     "descricao": "Apoiado em um antebraço e na lateral do pé, mantenha o corpo alinhado e o quadril elevado.",
     "img": "https://www.repcountapp.com/images/exercises/side-plank.jpg",
     "grupoPrincipal": "core",
+    "emSegundos": true,
     "gruposSecundarios": [
       "obliquos"
     ]
   },
   {
     "id": "elevacao-de-pernas",
-    "nome": "Elevação de pernas",
+    "nome": "Abdominal infra",
     "descricao": "Deitado ou pendurado na barra, eleve as pernas até a altura do quadril com o abdômen contraído e desça devagar.",
     "img": "https://www.lyfta.app/_next/image?url=https%3A%2F%2Flyfta.app%2Fimages%2Fexercises%2F08261101.png&w=640&q=80",
     "grupoPrincipal": "core",

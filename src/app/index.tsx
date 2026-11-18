@@ -51,7 +51,7 @@ export default function Inicio() {
         )}
         ListEmptyComponent={
           <Text style={estilosInicio.vazio}>
-            Nenhuma série ainda. Toque em "Montar série" para criar a primeira.
+            Nenhuma série ainda. Toque em &quot;Montar série&quot; para criar a primeira.
           </Text>
         }
       />

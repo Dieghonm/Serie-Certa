@@ -44,6 +44,10 @@ export function CartaoExercicio({
           <Pressable
             onPress={onAlternarConcluido}
             hitSlop={8}
+            accessibilityRole="button"
+            accessibilityLabel={
+              concluido ? "Reabrir exercício" : "Marcar exercício como concluído"
+            }
             style={[estilos.botaoConcluir, concluido && estilos.botaoConcluirAtivo]}
           >
             <Text
@@ -62,13 +66,21 @@ export function CartaoExercicio({
 
           <View style={estilos.estatisticas}>
             <Estatistica rotulo="Séries" valor={String(item.series)} />
-            <Estatistica rotulo="Repetições" valor={String(item.repeticoes)} />
+            <Estatistica
+              rotulo={exercicio.emSegundos ? "Segundos" : "Repetições"}
+              valor={String(item.repeticoes)}
+            />
             <Estatistica
               rotulo="Carga"
               valor={`${String(item.carga).replace(".", ",")} kg`}
             />
             {editavel && (
-              <Pressable style={estilos.botaoEditar} onPress={onEditar}>
+              <Pressable
+                style={estilos.botaoEditar}
+                onPress={onEditar}
+                accessibilityRole="button"
+                accessibilityLabel="Editar exercício"
+              >
                 <Text style={estilos.iconeEditar}>✎</Text>
                 <Text style={estilos.rotuloEditar}>Editar</Text>
               </Pressable>

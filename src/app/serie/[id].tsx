@@ -119,6 +119,9 @@ export default function DetalheSerie() {
   const indiceEditando = exercicios.findIndex((e) => e.exercicioId === editandoId);
   const itemEditando = exercicios.find((e) => e.exercicioId === editandoId);
 
+  const exercicioEditando =
+  itemEditando === undefined ? undefined : buscarPorId(itemEditando.exercicioId);
+
   return (
     <View style={estilosSerie.container}>
       <Stack.Screen
@@ -220,7 +223,8 @@ export default function DetalheSerie() {
       {itemEditando !== undefined && (
         <EditarExercicio
           key={itemEditando.exercicioId}
-          nome={buscarPorId(itemEditando.exercicioId)?.nome ?? ""}
+          nome={exercicioEditando?.nome ?? ""}
+          emSegundos={exercicioEditando?.emSegundos ?? false}
           item={itemEditando}
           posicao={indiceEditando + 1}
           total={exercicios.length}
