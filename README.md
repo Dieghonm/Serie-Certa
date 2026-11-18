@@ -1,56 +1,120 @@
-# Welcome to your Expo app 👋
+# Série Certa
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile para montar e acompanhar treinos de academia. Você cria suas séries de exercícios, ajusta séries, repetições e carga, usa um cronômetro de descanso e registra os treinos concluídos em um calendário.
 
-## Get started
+Feito com **React Native**, **TypeScript** e **Expo**. Todos os dados ficam salvos no próprio celular, sem conta e sem servidor.
 
-1. Install dependencies
+<p align="center">
+  <img src="docs/inicio.png" width="200" alt="Tela inicial" />
+  <img src="docs/serie.png" width="200" alt="Detalhe da série" />
+  <img src="docs/calendario.png" width="200" alt="Calendário" />
+</p>
 
-   ```bash
-   npm install
-   ```
+## Funcionalidades
 
-2. Start the app
+- **Séries prontas:** na primeira abertura o app já vem com três séries de exemplo (Pernas, Costas e bíceps, Peito e tríceps).
+- **Montar e editar séries:** escolha os exercícios por grupo muscular, com imagem e descrição. Dá para voltar e adicionar ou remover exercícios de uma série existente.
+- **Cartão do exercício:** mostra imagem, descrição, séries, repetições e carga, mais um comentário opcional.
+- **Edição rápida:** altere séries, repetições, carga, comentário e a posição do exercício na série.
+- **Progresso no treino:** marque cada exercício como concluído e o cartão se recolhe, ficando apagado.
+- **Cronômetro de descanso:** contagem regressiva com ajuste de 10 em 10 segundos, vibração ao terminar e tempo guardado em cada série.
+- **Concluir treino:** o treino só pode ser concluído quando mais da metade dos exercícios estiver marcada. Caso contrário, o botão vira "Sair sem concluir".
+- **Calendário:** os dias com treino concluído ficam marcados, com um popup do dia e a lista dos treinos feitos, do mais recente para o mais antigo.
+- **Arquivar, desarquivar e excluir:** séries arquivadas ficam no Histórico e podem voltar ou ser apagadas de vez.
 
-   ```bash
-   npx expo start
-   ```
+## Tecnologias
 
-In the output, you'll find options to open the app in a
+- [Expo](https://expo.dev) (SDK 58) e [Expo Router](https://docs.expo.dev/router/introduction) para navegação baseada em arquivos
+- React Native 0.88 e React 19, com o React Compiler ativado
+- TypeScript em modo `strict`
+- [AsyncStorage](https://react-native-async-storage.github.io/async-storage/) para guardar os dados no aparelho
+- [expo-image](https://docs.expo.dev/versions/latest/sdk/image/) para as imagens e GIFs dos exercícios
+- [EAS Build](https://docs.expo.dev/build/introduction/) para gerar o instalável
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Como rodar
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Pré-requisito: Node.js 22.13 ou superior.
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+No terminal do Expo, escolha onde abrir:
 
-### Other setup steps
+- **Celular:** instale o app Expo Go e leia o QR code.
+- **Emulador Android:** pressione `a`.
+- **Navegador:** pressione `w`.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+### Comandos úteis
 
-## Learn more
+```bash
+npx tsc --noEmit    # verifica os tipos
+npx expo lint       # roda o linter
+npx expo-doctor     # diagnostica dependências e configuração
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Gerar o instalável (Android)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+O build é feito na nuvem com o EAS, sem precisar do Android Studio.
 
-## Join the community
+```bash
+npm install --global eas-cli
+eas login
+eas build --platform android --profile preview
+```
 
-Join our community of developers creating universal apps.
+Ao terminar, o terminal mostra um link e um QR code para baixar o APK e instalar no celular. O perfil `preview` usa distribuição interna e está definido no `eas.json`.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Estrutura do projeto
+
+```
+src/
+  app/            Telas e rotas (Expo Router)
+    index.tsx         Tela inicial, com a lista de séries
+    montar.tsx        Criar e editar uma série
+    historico.tsx     Séries arquivadas
+    calendario.tsx    Calendário e lista de treinos concluídos
+    serie/[id].tsx    Detalhe da série, onde o treino acontece
+  components/     Componentes reutilizáveis (botão, cartões, cronômetro...)
+  data/           exercicios.json e as séries iniciais
+  styles/         Tema (cores, espaçamentos) e estilos de cada tela e componente
+  types/          Tipos TypeScript (Exercicio, Treino, Conclusao)
+  utils/          Armazenamento local, datas e busca de exercícios
+```
+
+Os estilos ficam separados dos componentes, em `src/styles`, e todos usam as cores e medidas do `tema.ts`. Para mudar a identidade visual do app, comece por esse arquivo.
+
+## Como os dados são guardados
+
+Tudo é salvo no `AsyncStorage`, em três chaves:
+
+| Chave | Conteúdo |
+| --- | --- |
+| `serie-certa:treinos` | Lista de séries, com exercícios, cargas e descanso |
+| `serie-certa:series-iniciais` | Marca de que as séries de exemplo já foram criadas |
+| `serie-certa:conclusoes` | Treinos concluídos (data e nome), usados no calendário |
+
+Como os dados só existem no aparelho, desinstalar o app ou limpar seus dados apaga tudo.
+
+## Adicionar exercícios
+
+Os exercícios ficam em `src/data/exercicios.json`. Cada item segue este formato:
+
+```json
+{
+  "id": "rosca-direta",
+  "nome": "Rosca direta",
+  "descricao": "Em pé, flexione os cotovelos levando a barra até a altura dos ombros.",
+  "img": "https://exemplo.com/rosca-direta.gif",
+  "grupoPrincipal": "biceps",
+  "gruposSecundarios": []
+}
+```
+
+- `id` precisa ser único e é o que as séries guardam, então evite mudá-lo depois.
+- `img` pode ficar vazio (`""`), e o app mostra "Sem imagem".
+- Para exercícios medidos em tempo (como a prancha), adicione `"emSegundos": true`.
+- Se criar um grupo novo, acrescente o nome de exibição em `NOMES_GRUPOS`, no arquivo `src/utils/exercicios.ts`.
+
+As imagens vêm de links externos e podem deixar de funcionar com o tempo. Se algum link quebrar, o app mostra o aviso "Sem imagem" no lugar.
