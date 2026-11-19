@@ -34,6 +34,7 @@ export default function Montar() {
   const [selecionados, setSelecionados] = useState<string[]>([]);
   const [grupoAtivo, setGrupoAtivo] = useState("Todos");
   const [mostrarSelecionados, setMostrarSelecionados] = useState(false);
+  const [expandidos, setExpandidos] = useState<string[]>([]);
 
   useEffect(() => {
     if (id === undefined) return;
@@ -58,6 +59,14 @@ export default function Montar() {
 
   function alternarSelecao(exercicioId: string) {
     setSelecionados((atual) =>
+      atual.includes(exercicioId)
+        ? atual.filter((item) => item !== exercicioId)
+        : [...atual, exercicioId]
+    );
+  }
+
+  function alternarExpandido(exercicioId: string) {
+    setExpandidos((atual) =>
       atual.includes(exercicioId)
         ? atual.filter((item) => item !== exercicioId)
         : [...atual, exercicioId]
@@ -104,22 +113,46 @@ export default function Montar() {
 
   function renderizarExercicio({ item }: { item: Exercicio }) {
     const selecionado = selecionados.includes(item.id);
+    const expandido = expandidos.includes(item.id);
+
     return (
-      <Pressable
-        onPress={() => alternarSelecao(item.id)}
+      <View
         style={[
           estilosMontar.cartao,
           selecionado && estilosMontar.cartaoSelecionado,
         ]}
       >
         <View style={estilosMontar.cartaoTopo}>
-          <Text style={estilosMontar.nomeExercicio}>{item.nome}</Text>
-          <Text style={estilosMontar.marcador}>{selecionado ? "☑" : "☐"}</Text>
+          <Pressable
+            style={estilosMontar.areaSelecao}
+            onPress={() => alternarSelecao(item.id)}
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: selecionado }}
+            accessibilityLabel={item.nome}
+          >
+            <Text style={estilosMontar.nomeExercicio}>{item.nome}</Text>
+            <Text style={estilosMontar.marcador}>{selecionado ? "☑" : "☐"}</Text>
+          </Pressable>
+
+          <Pressable
+            style={estilosMontar.botaoExpandir}
+            onPress={() => alternarExpandido(item.id)}
+            hitSlop={6}
+            accessibilityRole="button"
+            accessibilityLabel={expandido ? "Recolher exercício" : "Expandir exercício"}
+          >
+            <Text style={estilosMontar.textoExpandir}>{expandido ? "▲" : "▼"}</Text>
+          </Pressable>
         </View>
-        <ImagemExercicio uri={item.img} animar={false} />
-        <Text style={estilosMontar.descricao}>{item.descricao}</Text>
-        <Text style={estilosMontar.grupo}>{nomeDoGrupo(item.grupoPrincipal)}</Text>
-      </Pressable>
+
+        {expandido && (
+          <>
+            <ImagemExercicio uri={item.img} animar={false} />
+            <Text style={estilosMontar.descricao}>{item.descricao}</Text>
+            <Text style={estilosMontar.grupo}>{nomeDoGrupo(item.grupoPrincipal)}</Text>
+          </>
+        )}
+      </View>
     );
   }
 

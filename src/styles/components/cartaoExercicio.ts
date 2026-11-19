@@ -7,15 +7,21 @@ export const estilosCartaoExercicio = StyleSheet.create({
     borderWidth: 1,
     borderColor: cores.borda,
     borderRadius: raios.grande,
-    padding: espacamentos.medio,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
     gap: 14,
   },
   cartaoConcluido: {
     opacity: 0.5,
-    paddingVertical: 12,
   },
 
   cabecalho: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  areaTitulo: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
@@ -33,12 +39,17 @@ export const estilosCartaoExercicio = StyleSheet.create({
     fontWeight: "800",
     fontSize: 14,
   },
+  textos: { flex: 1, gap: 2 },
   nome: {
-    flex: 1,
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "700",
     color: cores.texto,
     letterSpacing: 0.2,
+  },
+  resumo: {
+    fontSize: 12,
+    color: cores.textoSecundario,
+    fontVariant: ["tabular-nums"],
   },
 
   botaoConcluir: {
@@ -58,6 +69,19 @@ export const estilosCartaoExercicio = StyleSheet.create({
   textoConcluir: { color: cores.textoSecundario, fontSize: 16, fontWeight: "700" },
   textoConcluirAtivo: { color: cores.textoSobrePrimaria },
 
+  botaoExpandir: {
+    width: 36,
+    height: 36,
+    borderRadius: raios.medio,
+    backgroundColor: cores.superficie,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textoExpandir: { color: cores.primaria, fontSize: 12 },
+
+  detalhes: { gap: 14 },
   descricao: { color: cores.textoSecundario, lineHeight: 21, fontSize: 14 },
 
   estatisticas: { flexDirection: "row", gap: espacamentos.pequeno },

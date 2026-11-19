@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { Stack, router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Alert, ScrollView, Text, View } from "react-native";
+import { AcoesTreino } from "@/components/AcoesTreino";
 import { Botao } from "@/components/Botao";
 import { CartaoExercicio } from "@/components/CartaoExercicio";
 import { Cronometro } from "@/components/cronometro";
@@ -120,7 +121,7 @@ export default function DetalheSerie() {
   const itemEditando = exercicios.find((e) => e.exercicioId === editandoId);
 
   const exercicioEditando =
-  itemEditando === undefined ? undefined : buscarPorId(itemEditando.exercicioId);
+    itemEditando === undefined ? undefined : buscarPorId(itemEditando.exercicioId);
 
   return (
     <View style={estilosSerie.container}>
@@ -187,36 +188,22 @@ export default function DetalheSerie() {
             />
           </>
         ) : (
-          <>
-                        {podeConcluir ? (
-              <Botao titulo="Concluir treino" onPress={concluir} />
-            ) : (
-              <Botao
-                titulo="Sair sem concluir"
-                variante="secundario"
-                onPress={() => router.replace("/")}
-              />
-            )}
-            <Botao
-              titulo="Editar série"
-              variante="secundario"
-              onPress={() =>
-                router.push({ pathname: "/montar", params: { id } })
-              }
-            />
-            <Botao
-              titulo="Arquivar"
-              variante="secundario"
-              onPress={() =>
-                confirmar(
-                  "Arquivar série",
-                  "Quer mesmo arquivar esta série?",
-                  "Arquivar",
-                  alternarArquivamento
-                )
-              }
-            />
-          </>
+          <AcoesTreino
+            feitos={feitos}
+            total={exercicios.length}
+            podeConcluir={podeConcluir}
+            onConcluir={concluir}
+            onSair={() => router.replace("/")}
+            onEditar={() => router.push({ pathname: "/montar", params: { id } })}
+            onArquivar={() =>
+              confirmar(
+                "Arquivar série",
+                "Quer mesmo arquivar esta série?",
+                "Arquivar",
+                alternarArquivamento
+              )
+            }
+          />
         )}
       </ScrollView>
 

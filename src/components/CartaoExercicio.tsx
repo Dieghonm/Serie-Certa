@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { ImagemExercicio } from "@/components/ImagemExercicio";
 import { estilosCartaoExercicio as estilos } from "@/styles/components/cartaoExercicio";
@@ -32,17 +33,42 @@ export function CartaoExercicio({
   onEditar,
   onAlternarConcluido,
 }: Props) {
+  const [aberto, setAberto] = useState(false);
+
+  const carga = String(item.carga).replace(".", ",");
+  const resumo =
+    `${item.series} × ${item.repeticoes}${exercicio.emSegundos ? " s" : ""}` +
+    (item.carga > 0 ? ` · ${carga} kg` : "");
+
+  function alternarConcluido() {
+    if (!concluido) setAberto(false);
+    onAlternarConcluido();
+  }
+
   return (
     <View style={[estilos.cartao, concluido && estilos.cartaoConcluido]}>
       <View style={estilos.cabecalho}>
-        <View style={estilos.numeroCaixa}>
-          <Text style={estilos.numero}>{numero}</Text>
-        </View>
-        <Text style={estilos.nome}>{exercicio.nome}</Text>
+        <Pressable
+          style={estilos.areaTitulo}
+          onPress={() => setAberto((v) => !v)}
+          accessibilityRole="button"
+          accessibilityState={{ expanded: aberto }}
+          accessibilityLabel={`${exercicio.nome}, ${aberto ? "recolher" : "expandir"}`}
+        >
+          <View style={estilos.numeroCaixa}>
+            <Text style={estilos.numero}>{numero}</Text>
+          </View>
+          <View style={estilos.textos}>
+            <Text style={estilos.nome} numberOfLines={2}>
+              {exercicio.nome}
+            </Text>
+            <Text style={estilos.resumo}>{resumo}</Text>
+          </View>
+        </Pressable>
 
         {editavel && (
           <Pressable
-            onPress={onAlternarConcluido}
+            onPress={alternarConcluido}
             hitSlop={8}
             accessibilityRole="button"
             accessibilityLabel={
@@ -57,10 +83,20 @@ export function CartaoExercicio({
             </Text>
           </Pressable>
         )}
+
+        <Pressable
+          onPress={() => setAberto((v) => !v)}
+          hitSlop={8}
+          accessibilityRole="button"
+          accessibilityLabel={aberto ? "Recolher exercício" : "Expandir exercício"}
+          style={estilos.botaoExpandir}
+        >
+          <Text style={estilos.textoExpandir}>{aberto ? "▲" : "▼"}</Text>
+        </Pressable>
       </View>
 
-      {!concluido && (
-        <>
+      {aberto && (
+        <View style={estilos.detalhes}>
           <ImagemExercicio uri={exercicio.img} />
           <Text style={estilos.descricao}>{exercicio.descricao}</Text>
 
@@ -70,10 +106,7 @@ export function CartaoExercicio({
               rotulo={exercicio.emSegundos ? "Segundos" : "Repetições"}
               valor={String(item.repeticoes)}
             />
-            <Estatistica
-              rotulo="Carga"
-              valor={`${String(item.carga).replace(".", ",")} kg`}
-            />
+            <Estatistica rotulo="Carga" valor={`${carga} kg`} />
             {editavel && (
               <Pressable
                 style={estilos.botaoEditar}
@@ -93,7 +126,7 @@ export function CartaoExercicio({
               <Text style={estilos.textoComentario}>{item.comentario}</Text>
             </View>
           ) : null}
-        </>
+        </View>
       )}
     </View>
   );

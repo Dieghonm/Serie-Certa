@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { cores, raios } from "@/styles/tema";
+import { cores, espacamentos, raios } from "@/styles/tema";
 
 export const estilosCronometro = StyleSheet.create({
   linha: {
@@ -48,4 +48,57 @@ export const estilosCronometro = StyleSheet.create({
     letterSpacing: 1,
     textTransform: "uppercase",
   },
+  fundoModal: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: espacamentos.grande,
+  },
+  fundoToque: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  cartaoModal: {
+    width: "100%",
+    backgroundColor: cores.cartao,
+    borderRadius: raios.grande,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    padding: espacamentos.grande,
+    gap: espacamentos.medio,
+  },
+  tituloModal: { color: cores.texto, fontSize: 18, fontWeight: "800" },
+  camposLinha: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: espacamentos.pequeno,
+  },
+  campoGrupo: { alignItems: "center", gap: 4 },
+  entrada: {
+    width: 88,
+    backgroundColor: cores.superficie,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    borderRadius: raios.medio,
+    paddingVertical: 12,
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "700",
+    color: cores.texto,
+    fontVariant: ["tabular-nums"],
+  },
+  rotuloCampo: {
+    color: cores.textoSecundario,
+    fontSize: 11,
+    fontWeight: "700",
+    letterSpacing: 0.8,
+    textTransform: "uppercase",
+  },
+  separador: { color: cores.textoSecundario, fontSize: 24, fontWeight: "700", marginBottom: 18 },
+  acoes: { gap: espacamentos.pequeno },
 });

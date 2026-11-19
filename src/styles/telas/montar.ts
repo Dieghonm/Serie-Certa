@@ -82,4 +82,21 @@ export const estilosMontar = StyleSheet.create({
   },
   vazio: { textAlign: "center", padding: 24, color: cores.textoSecundario },
   cabecalhoLista: { gap: espacamentos.pequeno },
+  areaSelecao: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  botaoExpandir: {
+    width: 36,
+    height: 36,
+    borderRadius: raios.medio,
+    backgroundColor: cores.superficie,
+    borderWidth: 1,
+    borderColor: cores.borda,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textoExpandir: { color: cores.primaria, fontSize: 12 },
 });
