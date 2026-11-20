@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { Stack, router, useFocusEffect } from "expo-router";
-import { FlatList, Pressable, Text, View } from "react-native";
+import { router, useFocusEffect } from "expo-router";
+import { FlatList, Text, View } from "react-native";
 import { listarTreinos, prepararSeriesIniciais } from "@/utils/armazenamento";
 import { Treino } from "@/types/treino";
 import { estilosInicio } from "@/styles/telas/inicio";
@@ -23,19 +23,6 @@ export default function Inicio() {
 
   return (
     <View style={estilosInicio.container}>
-      <Stack.Screen
-        options={{
-          headerRight: () => (
-            <Pressable
-              onPress={() => router.push("/calendario")}
-              hitSlop={12}
-            >
-              <Text style={estilosInicio.iconeHeader}>📅</Text>
-            </Pressable>
-          ),
-        }}
-      />
-
       <FlatList
         style={estilosInicio.areaLista}
         contentContainerStyle={estilosInicio.lista}
